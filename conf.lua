@@ -18,8 +18,7 @@ for i, path in ipairs(paths) do
     end
 end
 
--- First set the lua searchpath of love to our needs,
--- then require moonscript,
+-- First set the lua searchpath of love to our needs, then require moonscript,
 -- which registers its own loader (for files with the .moon extension)
 -- with the luapathes rewriten for moonscript.
 love.filesystem.setRequirePath(search_path)
@@ -28,10 +27,3 @@ require"moonscript"
 -- Register the love.conf function after requireing moonscript,
 -- since the function's file could already miss a lua counterpart.
 love.conf = require"love_conf"
-
-
-
--- print("luapath: "       .. package.path)
--- print("love_luapath: "  .. love.filesystem.getRequirePath())
--- print("moonpath: "      .. package.moonpath)
--- print("love_moonpath: " .. package.love_moonpath)
