@@ -135,8 +135,8 @@ load = ->
 
     require"server.main"
 
-    hovered_hex  = Location(10,10)
-    selected_hex = Location(10,10)
+    hovered_hex  = Location()
+    selected_hex = Location()
 
     gameMap_hex_h, gameMap_hex_w, border_size = wesnoth.get_map_size!
 
@@ -239,8 +239,13 @@ update_ = (dt) ->
         dlg.location.text = "#{hovered_hex.x}/#{hovered_hex.y}"
         hovered_x, hovered_y = pixel_position_to_hex(
             x + gameMap_offset_x, y + gameMap_offset_y)
-        hovered_hex.x = hovered_x
-        hovered_hex.y = hovered_y
+        if hovered_x > 0 and hovered_x < gameMap_hex_w and
+                hovered_y > 0 and hovered_y < gameMap_hex_h
+            hovered_hex.x = hovered_x
+            hovered_hex.y = hovered_y
+        else
+            hovered_hex.x = nil
+            hovered_hex.y = nil
         scroll(dt)
     else
         dlg.location.text = ""
@@ -262,7 +267,7 @@ update_ = (dt) ->
     -- @todo comment
     dlg\show! if (not dlg.isShown) and (not gameMenu.isShown)
 
-    move_cursor(dt)
+    -- move_cursor(dt)
     -- moan.update(dt)
 
 
@@ -330,7 +335,7 @@ draw_hex = (loc_x, loc_y, at_x, at_y) ->
             at_x + tile_w/4, at_y + (tile_h / 2) -
             font_size, tile_w, "center")
 
-    if selected_hex
+    if selected_hex.x
         highlighted = reach_map[loc_x] and
             reach_map[loc_x][loc_y]
         unless highlighted
@@ -338,6 +343,7 @@ draw_hex = (loc_x, loc_y, at_x, at_y) ->
 
     if hovered_hex.x == loc_x and
             hovered_hex.y == loc_y
+
         love.graphics.draw(hex_cursor, at_x, at_y)
 
     if unit = wesnoth.get_unit(loc_x, loc_y)
@@ -398,9 +404,12 @@ draw = ->
             "RAM: #{mem_used}MB", 10, 4)
 
 
-select_hex = (loc) ->
-    selected_hex = Location(loc)
+select_hex = (x, y) ->
+    selected_hex.x = x
+    selected_hex.y = y
     path_turns_ = 0
+    unless x
+        return
     selected_unit = wesnoth.get_unit(selected_hex.x, selected_hex.y)
     if selected_unit
         reach = wesnoth.find_reach(selected_unit, {
@@ -417,20 +426,20 @@ select_hex = (loc) ->
                 reach_map[loc_x] = {}
             reach_map[loc_x][loc_y] = true
     else
-        print selected_hex
         new_x = selected_hex.x
         new_y = selected_hex.y
         reach_map = {
             [new_x]: {[new_y]: true}
         }
+    log.debug"#{selected_hex} selected."
 
 
 left_mouse_press = (x, y) ->
     if dlg.gameMap\isAt(x,y)
         if selected_hex == hovered_hex
-            selected_hex = nil
+            selected_hex.x = nil
         else
-            select_hex(hovered_hex)
+            select_hex(hovered_hex.x, hovered_hex.y)
 
 
 mousepressed = (x, y, button, istouch) ->
