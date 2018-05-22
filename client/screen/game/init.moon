@@ -4,8 +4,8 @@ love = love
 
 dlg = (require"client.gui.dialogs.game_screen")!
 
-board = require"client.screen.game_screen.board"
-moan  = require"client.screen.game_screen.moan"
+board = require"client.screen.game.board"
+moan  = require"client.screen.game.moan"
 
 
 open = ->

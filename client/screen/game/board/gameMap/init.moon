@@ -1,13 +1,12 @@
 love = love
 import get_map_size from require"wesnoth.map"
 import get_unit     from require"wesnoth.units"
-pixel_to_hex = require"client.screen.game_screen.board.pixel_to_hex"
-draw_hex     = require"client.screen.game_screen.board.gameMap.draw_hex"
--- scroll       = require"client.screen.game_screen.board.gameMap.scroll"
-update_unit  = require"client.screen.game_screen.board.gameMap.update_unit"
+pixel_to_hex = require"client.screen.game.board.pixel_to_hex"
+draw_hex     = require"client.screen.game.board.gameMap.draw_hex"
+-- scroll       = require"client.screen.game.board.gameMap.scroll"
+update_unit  = require"client.screen.game.board.gameMap.update_unit"
 
 -- local gameState
-
 local border_size
 
 

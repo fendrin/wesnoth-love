@@ -5,7 +5,7 @@ tile_w = 54
 draw_terrain = require"client.draw_terrain"
 line_size = 2
 
-pixel_to_hex = require"client.screen.game_screen.board.pixel_to_hex"
+pixel_to_hex = require"client.screen.game.board.pixel_to_hex"
 
 local miniMap, miniMapScaled
 
