@@ -4,15 +4,20 @@
 -- At last we register our config function here which is later called for
 -- seting up the engine's parameters.
 
+local search_path = love.filesystem.getRequirePath()
 local paths = {
-    love.filesystem.getRequirePath(),
-    "lib/?.lua", "lib/?/init.lua",
-    "lib/moonscript/?.lua"
+    "lib",
+    "lib/moonscript",
+    "client/lib",
+    "shared"
 }
 
-local search_path = ""
 for i, path in ipairs(paths) do
-    search_path = search_path .. path
+    if i == 1 then
+        search_path = search_path .. ';'
+    end
+    search_path = search_path .. path .. "/?.lua;"
+    search_path = search_path .. path .. "/?/init.lua"
     if i ~= #paths then
         search_path = search_path .. ';'
     end
