@@ -1,6 +1,6 @@
 
 -- local parent
-miniMap = require"client.miniMap"
+-- miniMap = require"client.miniMap"
 
 open = (x, y) ->
     -- parent = par
@@ -25,8 +25,8 @@ return (screen) ->
     -- prefs = (require"client.gui.dialogs.preferences")(exit)
 
     return {
-        update: miniMap.update
-        draw: miniMap.draw
+        -- update: miniMap.update
+        -- draw: miniMap.draw
 
         :keypressed
 
