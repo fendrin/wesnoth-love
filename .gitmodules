@@ -1,0 +1,21 @@
+[submodule "lib/moonscript"]
+	path = lib/moonscript
+	url = https://github.com/fendrin/moonscript.git
+[submodule "server/lib/wesnoth"]
+	path = server/lib/wesnoth
+	url = https://github.com/fendrin/wesnoth-api.git
+[submodule "client/lib/luigi"]
+	path = client/lib/luigi
+	url = https://github.com/fendrin/luigi.git
+[submodule "assets"]
+	path = assets
+	url = https://github.com/fendrin/wesnoth-assets.git
+[submodule "data"]
+	path = data
+	url = https://github.com/fendrin/wesnoth-data.git
+[submodule "client/lib/Moan"]
+	path = client/lib/Moan
+	url = https://github.com/fendrin/Moan.lua.git
+[submodule "client/lib/splashes"]
+	path = client/lib/splashes
+	url = https://github.com/fendrin/splashes.git
