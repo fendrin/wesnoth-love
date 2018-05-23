@@ -23,7 +23,7 @@ return ( config ) ->
         .identity = game_id
         .version  = love_version
         -- .console  = true
-        -- with .window
+        with .window
             -- .title      = "#{game_title} | Irdya (v#{irdya_version})"
             -- .icon       = "assets/icons/#{game_id}-icon.png"
             -- .msaa       = 4
@@ -33,7 +33,7 @@ return ( config ) ->
             -- .minheight  = 480
             -- .borderless = false
             -- .resizable  = true
-            -- .fullscreen = true
+            .fullscreen = true
             -- .vsync      = false
         -- with .modules
             -- .physics = false
