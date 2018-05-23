@@ -12,8 +12,6 @@ load_images = ->
 
     gameState = gameState
 
-    require'moon'.p gameState
-
     with gameState.gameConfig.images
         foreground = get_image(.game_title)
         background = get_image(.game_title_background)
