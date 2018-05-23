@@ -30,7 +30,7 @@ preferences = (content) ->
         {flow: 'x', height: "auto", size: 22
         -- {flow: 'x', height: 720, width: 1280,size: 22
             {}
-            {slices: "client/gui/theme/wesnoth/submenu_solid.png"
+            {slices: "assets/themes/wesnoth/submenu_solid.png"
                 -- height: "auto", width: "auto", padding: 18
                 height: 720, width: 1280, padding: 18
                 {style: 'dialogHead', text: ' Preferences', size: 32,
