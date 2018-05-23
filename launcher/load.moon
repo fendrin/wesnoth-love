@@ -46,6 +46,7 @@ load = ( arg ) ->
     thread\start!
 
     screenID = "splash"
+    screenID = "load"
     screen = require"client.screen"
     screen(screenID)
 
