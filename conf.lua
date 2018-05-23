@@ -3,12 +3,14 @@
 -- used to configure the moonscript search pathes and loading moonscript.
 -- At last we register our config function here which is later called for
 -- seting up the engine's parameters.
+local love = love
 
 local search_path = love.filesystem.getRequirePath()
 local paths = {
     "lib",
     "lib/moonscript",
     "client/lib",
+    "server/lib",
     "shared"
 }
 
