@@ -17,3 +17,8 @@ This are general instructions, for specific operating systems have a look below.
 # love2d and dependencies of wesnoth-love
 sudo add-apt-repository -y 'ppa:bartbes/love-stable'; sudo apt-get update;
 sudo apt-get -y install love lua-penlight lua-lpeg lua-sec
+# fetch from github
+git clone https://github.com/fendrin/wesnoth-love.git wesnoth
+cd wesnoth; git submodule init; git submodule update
+# start the game
+./wesnoth
