@@ -358,12 +358,13 @@ unitBox = (id) -> {
         {
             width: 4
         }
-        -- file:///home/fabi/dvl/wesnoth-
         {
             -- value_bar("#{id}UnitLocation", "assets/images/icons/action/editor-brush-1_25-active.png", 78, 62)
             value_bar("#{id}UnitLocation", nil, 78, 78)
             value_bar("#{id}UnitStatus",   nil, 78, 78)
-            value_bar("#{id}UnitVision", "assets/vision.png", 78, 60)
+            value_bar("#{id}UnitVision",
+                "assets/data/core/images/themes/visionpoints.png",
+                78, 60)
             -- id: "#{id}UnitLocation"
             -- size: 15
             -- height: 22
