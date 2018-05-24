@@ -13,6 +13,7 @@
 [submodule "data"]
 	path = data
 	url = https://github.com/fendrin/wesnoth-data.git
+	branch = master
 [submodule "client/lib/Moan"]
 	path = client/lib/Moan
 	url = https://github.com/fendrin/Moan.lua.git
