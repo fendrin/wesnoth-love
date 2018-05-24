@@ -23,7 +23,7 @@ weapon_attribute = (unit, i, icon, value) -> {
     type: "label"
     margin:  0
     padding: 0
-    icon: get.assets"blank.png"
+    icon: get.assets"damage/blank.png"
     width: 56
     height: 27
     {
@@ -130,15 +130,15 @@ row1 = -> {
         width: 2
     }
     {
-        icon: "assets/blade.png"
+        icon: "assets/damage/blade.png"
         width: 56
     }
     {
-        icon: "assets/pierce.png"
+        icon: "assets/damage/pierce.png"
         width: 56
     }
     {
-        icon: "assets/impact.png"
+        icon: "assets/damage/impact.png"
         width: 56
     }
 }
@@ -150,15 +150,15 @@ row2 = -> {
         width: 2
     }
     {
-        icon: "assets/arcane.png"
+        icon: "assets/damage/arcane.png"
         width: 56
     }
     {
-        icon: "assets/fire.png"
+        icon: "assets/damage/fire.png"
         width: 56
     }
     {
-        icon: "assets/cold.png"
+        icon: "assets/damage/cold.png"
         width: 56
     }
 }
@@ -348,9 +348,12 @@ unitBox = (id) -> {
         }
         {
             width: "auto"
-            value_bar("#{id}UnitHP", "assets/healthy.png")
-            value_bar("#{id}UnitXP", "assets/intelligent.png")
-            value_bar("#{id}UnitMP", "assets/quick.png")
+            value_bar("#{id}UnitHP",
+                "assets/data/core/images/themes/hitpoints.png")
+            value_bar("#{id}UnitXP",
+                "assets/data/core/images/themes/experiencepoints.png")
+            value_bar("#{id}UnitMP",
+                "assets/data/core/images/themes/movepoints.png")
         }
         {
             width: 4

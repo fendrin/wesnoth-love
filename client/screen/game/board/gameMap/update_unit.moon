@@ -46,12 +46,12 @@ update_unit = (dlg, id, unit) ->
         attack_number = if attack then attack.number else ""
         dlg["#{id}UnitAttack#{i}Strikes"].text = attack_number
         range_icon = attack and "assets/" .. attack.range .. ".png" or
-            "assets/blank.png"
+            "assets/damage/blank.png"
         dlg["#{id}UnitAttack#{i}Range"].icon = range_icon
-        type_icon = if attack then "assets/" ..
+        type_icon = if attack then "assets/damage/" ..
             attack.type .. ".png"
         else
-            "assets/blank.png"
+            "assets/damage/blank.png"
         dlg["#{id}UnitAttack#{i}Type"].icon = type_icon
 
 
