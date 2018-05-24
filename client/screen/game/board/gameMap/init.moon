@@ -124,7 +124,6 @@ draw_hex_ = (x, y, loc_x, loc_y, offset_x, offset_y) ->
 
 buffer_size = 2
 draw = (dlg, gameMap_offset_x, gameMap_offset_y) ->
-    -- assert(gameMap)
 
     love.graphics.setCanvas(gameMap)
     love.graphics.clear!
