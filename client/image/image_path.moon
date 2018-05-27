@@ -38,6 +38,7 @@ get_Color_Range = (cfg) ->
     return res
     -- @Data.Color_Range[cfg.id] = res
 
+log = (require'log')'Image Loader'
 love = love
 -- lg = love.graphics
 -- get = require"filesystem"
@@ -55,6 +56,7 @@ get_binary = (path) ->
         if love.filesystem.getInfo("assets/" .. bin_path .. "/" .. path)
             -- print  "assets/" .. bin_path .. "/" .. path
             return "assets/" .. bin_path .. "/" .. path
+    log.warn"Image #{path} not found"
     return nil
 
 -- import hex2rgb, rgb2hex from require"client.image.utils"
