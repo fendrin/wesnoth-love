@@ -61,7 +61,6 @@ handle_server = ->
         log.info"Handle Command: #{command.command_name}"
         return true if handle_command(command)
         if handler = screens[active_screen].handle_command
-            print""
             return true if handler(command)
         assert(false,
             "unhandled command #{command.command_name} by #{active_screen}")
