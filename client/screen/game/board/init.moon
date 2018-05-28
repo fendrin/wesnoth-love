@@ -67,9 +67,9 @@ mousemoved = (dlg, x, y, dx, dy, istouch ) ->
 
 
 update = (dlg, dt) ->
-    -- x, y = gameMap.update(dlg, dt)
-    -- gameMap_offset_x += x
-    -- gameMap_offset_y += y
+    x, y = gameMap.update(dlg, dt)
+    gameMap_offset_x += x
+    gameMap_offset_y += y
     -- miniMap.update(dlg, scroll_to_hex, dt)
     -- checkBoundaries(dlg)
 

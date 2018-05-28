@@ -3,7 +3,7 @@ import get_map_size from require"wesnoth.map"
 import get_unit     from require"wesnoth.units"
 pixel_to_hex = require"client.screen.game.board.pixel_to_hex"
 draw_hex     = require"client.screen.game.board.gameMap.draw_hex"
--- scroll       = require"client.screen.game.board.gameMap.scroll"
+scroll       = require"client.screen.game.board.gameMap.scroll"
 update_unit  = require"client.screen.game.board.gameMap.update_unit"
 
 -- local gameState
@@ -200,8 +200,8 @@ mousemoved = (dlg, gameMap_offset_x, gameMap_offset_y, x, y) ->
     return true
 
 update = (dlg, dt) ->
-    -- x,y = scroll(dlg, dt)
-    -- return x, y
+    x,y = scroll(dlg, dt)
+    return x, y
 
 
 setup = (dlg) ->
