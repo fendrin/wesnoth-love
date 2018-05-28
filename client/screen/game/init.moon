@@ -32,7 +32,7 @@ update = (dt) ->
 
 draw = ->
     -- moan.draw!
-    -- board.draw(dlg)
+    board.draw(dlg)
 
 
 -- @todo
