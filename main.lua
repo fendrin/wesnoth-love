@@ -1,4 +1,7 @@
 ----
+-- Copyright (C) 2018 by Fabian Mueller <fendrin@gmx.de>
+-- SPDX-License-Identifier: GPL-2.0+
+
 -- This file is executed by love after "conf.lua".
 -- Only those two files are ever sourced by the engine,
 -- every other functionallity must be required from here.

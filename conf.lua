@@ -1,4 +1,9 @@
 ----
+-- Copyright (C) 2018 by Fabian Mueller <fendrin@gmx.de>
+-- SPDX-License-Identifier: GPL-2.0+
+
+
+----
 -- Executed by the love2d engine before all other files.
 -- used to configure the moonscript search pathes and loading moonscript.
 -- At last we register our config function here which is later called for
