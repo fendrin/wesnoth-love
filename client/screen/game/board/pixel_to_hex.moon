@@ -1,3 +1,9 @@
+----
+-- Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+-- SPDX-License-Identifier: GPL-2.0+
+
+
+
 tile_h = 72
 tile_w = 54
 
