@@ -10,7 +10,6 @@ gameMap_offset_y = 0
 tile_w = 54
 tile_h = 72
 
-local gameState
 
 max_x_ = (dlg, gameMap_hex_w, border_size) ->
     widget_w = dlg.gameMap\getWidth!
@@ -71,7 +70,7 @@ update = (dlg, dt) ->
     gameMap_offset_x += x
     gameMap_offset_y += y
     -- miniMap.update(dlg, scroll_to_hex, dt)
-    -- checkBoundaries(dlg)
+    checkBoundaries(dlg)
 
 
 draw = (dlg) ->
@@ -85,7 +84,6 @@ resize = (w, h) ->
 
 
 setup = (dlg) ->
-    gameState = gameState
     gameMap.setup(dlg)
     miniMap.setup(dlg)
 
