@@ -1,3 +1,7 @@
+----
+-- Copyright (C) 2018 by Fabian Mueller <fendrin@gmx.de>
+-- SPDX-License-Identifier: GPL-2.0+
+
 import recolor_image from require"client.image.utils"
 
 Color_Range = {
