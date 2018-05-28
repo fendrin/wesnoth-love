@@ -30,12 +30,13 @@ weapon_attribute = (unit, i, icon, value) -> {
         margin: 0
         padding: 0
         id: "#{unit}UnitAttack#{i}#{value}"
-        align: "center, right"
+        -- align: "center, right"
+        align: "right, middle"
         color: {0.7,0.7,0.7}
         -- type: "label"
         width: 51
         height: 27
-        size: 16
+        size: 12
     }
 }
 
@@ -43,7 +44,7 @@ weapon = (unit, i) -> {
     flow: 'x'
     margin:  0
     padding: 0
-     -- slices: get.assets"data/core/images/attacks/blank-attack.png"
+    -- slices: get.assets"data/core/images/attacks/blank-attack.png"
     {
         width:  60
         height: 60
@@ -75,7 +76,7 @@ weapon = (unit, i) -> {
             height: 3
         }
         {
-             -- slices: get.assets"data/core/images/attacks/blank-attack.png"
+            slices: get.assets"data/core/images/attacks/blank-attack.png"
             width: 56
             height: 27
             color: {0.7,0.7,0.7}
@@ -96,7 +97,7 @@ weapon = (unit, i) -> {
 value_bar = (id, icon, width=86, iconWidth=65) -> {
     height: 20
     :width
-     -- slices: "assets/blank.png"
+    slices: "assets/damage/blank.png"
     flow: 'x'
     {
         icon: icon
@@ -173,7 +174,7 @@ resistances = (id) -> {
 
 attributeBox = (id, topic) -> {
     flow: 'x'
-     -- slices: "assets/data/core/images/attacks/blank-attack.png"
+    slices: "assets/data/core/images/attacks/blank-attack.png"
     height: "auto"
     width:  "auto"
     -- margin: 3
@@ -310,7 +311,7 @@ unitBox = (id) -> {
         flow: 'x'
         {
             id: "#{id}UnitImage"
-             -- slices: "assets/data/core/images/attacks/blank-attack.png"
+            slices: "assets/data/core/images/attacks/blank-attack.png"
             height: 90
             width:  90
             align: "center, middle"
@@ -449,6 +450,7 @@ goldInfo = ->
     itemInfo("assets/data/core/images/themes/gold.png", 45)
 
 sideBox = {
+    background: {0,0,0}
     padding: 5
     height: "auto"
     width: "auto"
@@ -526,12 +528,14 @@ miniMap = {
             height: 25, width: 25
             icon: "assets/images/icons/action/editor-draw-coordinates_25-active.png"
         }
+        background: {0,0,0}
     }
     { id: "miniMap" }
 }
 
 bottom = {
     height: "auto"
+    background: {0,0,0}
     {
         background: {0,0,0}
         type: 'status'
@@ -596,7 +600,7 @@ sideBar = {
     {
         type: 'sash'
         width: 8
-        --  -- slicesH: "assets/images/dialogs/thin_translucent-border-left.png"
+        slices: "assets/images/dialogs/thin_translucent-border-left.png"
     }
     sideBar
 }
