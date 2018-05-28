@@ -37,8 +37,8 @@ draw_hex = (loc_x, loc_y, at_x, at_y, highlighted = true, hovered = false) ->
     -- else
         -- love.graphics.setColor(1,1,1)
 
-    -- if unit = get_unit(gameState, loc_x, loc_y)
-    --     draw_unit(unit, at_x, at_y)
+    if unit = get_unit(gameState, loc_x, loc_y)
+        draw_unit(unit, at_x, at_y)
     -- love.graphics.setColor(1,1,1)
 
     if hovered
