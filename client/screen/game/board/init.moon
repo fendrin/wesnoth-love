@@ -76,7 +76,7 @@ update = (dlg, dt) ->
 draw = (dlg) ->
 
     gameMap.draw(dlg, gameMap_offset_x, gameMap_offset_y)
-    -- miniMap.draw(dlg, gameMap_offset_x, gameMap_offset_y)
+    miniMap.draw(dlg, gameMap_offset_x, gameMap_offset_y)
 
 
 resize = (w, h) ->
