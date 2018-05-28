@@ -1,0 +1,8 @@
+#!/bin/bash
+# syntax: prepend_header <dir>
+
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+
+find $PWD/$1 -name "*.moon" -exec /bin/bash -c "cat $DIR/copyright_header_lua.txt  {} > {}.changed" \; -exec mv {}.changed {} \;
