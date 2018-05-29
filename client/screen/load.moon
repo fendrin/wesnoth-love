@@ -31,9 +31,7 @@ return (screen) ->
         open: (story) ->
             love.mouse.setVisible(false)
         close: ->
-            love.mouse.setVisible( true )
         update: (dt)->
-            love.mouse.setVisible( false )
         :handle_command
         draw: ->
             love.graphics.print("loading ...", 400,400)
