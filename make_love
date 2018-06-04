@@ -1,8 +1,10 @@
 #/bin/bash
 
 create_dir="distrib"
-win_zip="love-11.1-win64.zip"
-win_dir="love-11.1.0-win64"
+win_zip64="love-11.1-win64.zip"
+win_dir64="love-11.1.0-win64"
+win_zip32="love-11.1-win32.zip"
+win_dir32="love-11.1.0-win32"
 
 #if [ ! -d $create_dir ]; then
     mkdir -p $create_dir/resources
@@ -15,28 +17,55 @@ fi
 if [ -f $create_dir/wesnoth-love-win64.zip ]; then
     rm $create_dir/wesnoth-love-win64.zip
 fi
-
-zip -q -9 -r --exclude=*.git* $create_dir/Wesnoth.love .
-
-cd $create_dir/resources
-if [ ! -f $win_zip ]; then
-    #echo "Love win zip File not found!"
-    wget -q https://bitbucket.org/rude/love/downloads/$win_zip
+if [ -f $create_dir/wesnoth-love-win32.zip ]; then
+    rm $create_dir/wesnoth-love-win32.zip
 fi
 
-if [ ! -d $win_dir ]; then
-    #echo "Love win dir not found!"
-    unzip -q $win_zip
+zip -q -9 -r --exclude=*.git* --exclude=*distrib* $create_dir/Wesnoth.love .
+
+cd $create_dir/resources
+if [ ! -f $win_zip32 ]; then
+    #echo "Love win zip File not found!"
+    wget -q https://bitbucket.org/rude/love/downloads/$win_zip32
+fi
+if [ ! -f $win_zip64 ]; then
+    #echo "Love win zip File not found!"
+    wget -q https://bitbucket.org/rude/love/downloads/$win_zip64
+fi
+
+if [ ! -d $win_dir32 ]; then
+    #echo "Love win32 dir not found!"
+    unzip -q $win_zip32
+fi
+if [ ! -d $win_dir64 ]; then
+    #echo "Love win64 dir not found!"
+    unzip -q $win_zip64
 fi
 
 cd ..
 
-cat resources/$win_dir/love.exe Wesnoth.love > resources/$win_dir/Wesnoth.exe
+cat resources/$win_dir32/love.exe Wesnoth.love > resources/$win_dir32/Wesnoth.exe
+cat resources/$win_dir64/love.exe Wesnoth.love > resources/$win_dir64/Wesnoth.exe
 
 if [ -d resources/wesnoth-love-win64 ]; then
     rm -r resources/wesnoth-love-win64
 fi
-mv resources/$win_dir resources/wesnoth-love-win64
+if [ -d resources/wesnoth-love-win32 ]; then
+    rm -r resources/wesnoth-love-win32
+fi
+
+mv resources/$win_dir32 resources/wesnoth-love-win32
+cd resources/wesnoth-love-win32
+
+rm changes.txt readme.txt love.exe lovec.exe game.ico love.ico
+mv license.txt license_love2d.txt
+cp ../../../assets/images/icons/icon-game.png ./Wesnoth.ico
+cp ../../../README.md ./
+cp ../../../license.txt ./license_wesnoth.txt
+
+cd ../../
+
+mv resources/$win_dir64 resources/wesnoth-love-win64
 cd resources/wesnoth-love-win64
 
 rm changes.txt readme.txt love.exe lovec.exe game.ico love.ico
@@ -48,5 +77,8 @@ cp ../../../license.txt ./license_wesnoth.txt
 cd ..
 
 zip -q -9 -r wesnoth-love-win64.zip wesnoth-love-win64
+zip -q -9 -r wesnoth-love-win32.zip wesnoth-love-win32
 rm -r wesnoth-love-win64
+rm -r wesnoth-love-win32
 mv wesnoth-love-win64.zip ../
+mv wesnoth-love-win32.zip ../
