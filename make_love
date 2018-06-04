@@ -4,37 +4,49 @@ create_dir="distrib"
 win_zip="love-11.1-win64.zip"
 win_dir="love-11.1.0-win64"
 
-if [ ! -f $create_dir ]; then
-    mkdir $create_dir
-fi
+#if [ ! -d $create_dir ]; then
+    mkdir -p $create_dir/resources
+#fi
 
 if [ -f $create_dir/Wesnoth.love ]; then
     rm $create_dir/Wesnoth.love
 fi
 
-zip -9 -r --exclude=*.git* $create_dir/Wesnoth.love .
+if [ -f $create_dir/wesnoth-love-win64.zip ]; then
+    rm $create_dir/wesnoth-love-win64.zip
+fi
 
-if [ ! -f $create_dir/$win_zip ]; then
-    echo "Love win zip File not found!"
-    cd $create_dir
-    wget https://bitbucket.org/rude/love/downloads/$win_zip
+zip -q -9 -r --exclude=*.git* $create_dir/Wesnoth.love .
+
+cd $create_dir/resources
+if [ ! -f $win_zip ]; then
+    #echo "Love win zip File not found!"
+    wget -q https://bitbucket.org/rude/love/downloads/$win_zip
 fi
 
 if [ ! -d $win_dir ]; then
-    echo "Love win dir not found!"
-    unzip $win_zip
+    #echo "Love win dir not found!"
+    unzip -q $win_zip
 fi
 
-cat $win_dir/love.exe Wesnoth.love > $win_dir/Wesnoth.exe
+cd ..
 
-rm -rf wesnoth-love-win64
-mv $win_dir wesnoth-love-win64
-cd wesnoth-love-win64
+cat resources/$win_dir/love.exe Wesnoth.love > resources/$win_dir/Wesnoth.exe
+
+if [ -d resources/wesnoth-love-win64 ]; then
+    rm -r resources/wesnoth-love-win64
+fi
+mv resources/$win_dir resources/wesnoth-love-win64
+cd resources/wesnoth-love-win64
 
 rm changes.txt readme.txt love.exe lovec.exe game.ico love.ico
 mv license.txt license_love2d.txt
-cp ../../assets/images/icons/icon-game.png ./Wesnoth.ico
-cp ../../README.md ./
+cp ../../../assets/images/icons/icon-game.png ./Wesnoth.ico
+cp ../../../README.md ./
+cp ../../../license.txt ./license_wesnoth.txt
 
 cd ..
-zip -9 -r wesnoth-love-win64.zip wesnoth-love-win64
+
+zip -q -9 -r wesnoth-love-win64.zip wesnoth-love-win64
+rm -r wesnoth-love-win64
+mv wesnoth-love-win64.zip ../
