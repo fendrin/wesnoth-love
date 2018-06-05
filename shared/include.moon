@@ -1,7 +1,6 @@
 moonscript = require"moonscript"
 
 -- Penlight lib requires
-pl_path  = require"pl.path"
 import setfenv from require"pl.utils"
 
 get = require"shared.filesystem"
@@ -64,7 +63,7 @@ try = require"try"
 local load_cfg_file
 
 check_file = (path, name, env) ->
-    file_path = pl_path.join(path, name)
+    file_path = path .. "/" .. name
     if fs.getInfo(file_path)
         LOG_FS.debug"#{name} file found at #{path}"
         ret_val = load_cfg_file(file_path, env)
@@ -103,12 +102,13 @@ include_dir = (path, env) ->
         continue if item\sub(1,1) == "."
 
         LOG_FS.debug"Processing #{item}"
-        item_path = pl_path.join(path, item)
+        item_path = path .. '/' .. item
 
         item_info = fs.getInfo(item_path)
         switch item_info.type
             when "file"
-                if pl_path.extension(item_path) == ".wsl"
+                print item_path\sub(#item_path - 3)
+                if item_path\sub(#item_path - 3) == ".wsl"
                     ret = load_cfg_file(item_path, env)
             when "directory"
                 ret = include_dir(path .. item, env)
@@ -133,11 +133,11 @@ include_ = (script_base, path, env) ->
 
     local absolute_path
     if path\sub(1, 2) == "./"
-        absolute_path = pl_path.join(script_base, path\sub(3))
+        absolute_path = script_base .. '/' ..  path\sub(3)
         LOG_FS.debug("including relative path #{script_base}" ..
             " -/- #{path} >> #{absolute_path}")
     else
-        absolute_path = pl_path.join(toplevel_directory, path)
+        absolute_path = toplevel_directory .. '/' .. path
         LOG_FS.debug("including absolute path #{toplevel_directory}" ..
             " -/- #{path} >> #{absolute_path}")
 
