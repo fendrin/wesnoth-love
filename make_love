@@ -62,6 +62,7 @@ mv license.txt license_love2d.txt
 cp ../../../assets/images/icons/icon-game.png ./Wesnoth.ico
 cp ../../../README.md ./
 cp ../../../license.txt ./license_wesnoth.txt
+wget https://github.com/luapower/luapower-all/raw/master/bin/mingw32/clib/lpeg.dll
 
 cd ../../
 
@@ -73,6 +74,7 @@ mv license.txt license_love2d.txt
 cp ../../../assets/images/icons/icon-game.png ./Wesnoth.ico
 cp ../../../README.md ./
 cp ../../../license.txt ./license_wesnoth.txt
+wget https://github.com/luapower/luapower-all/raw/master/bin/mingw64/clib/lpeg.dll
 
 cd ..
 
@@ -82,3 +84,15 @@ rm -r wesnoth-love-win64
 rm -r wesnoth-love-win32
 mv wesnoth-love-win64.zip ../
 mv wesnoth-love-win32.zip ../
+
+cd resources
+
+wget ftp://ftp.info-zip.org/pub/infozip/win32/unz600xn.exe
+unzip unz600xn.exe unzipsfx.exe
+
+cd ..
+
+cat resources/unzipsfx.exe wesnoth-love-win64.zip > wesnoth-love-win64.exe
+cat resources/unzipsfx.exe wesnoth-love-win32.zip > wesnoth-love-win32.exe
+zip -A wesnoth-love-win64.exe
+zip -A wesnoth-love-win32.exe
