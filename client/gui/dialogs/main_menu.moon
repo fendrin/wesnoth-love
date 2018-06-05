@@ -8,18 +8,29 @@ main_menu = (screen) ->
     menu_dlg = (require"client.gui.dialog")("main_menu")
 
     with menu_dlg
-        .tutorial\onPress((event) ->
+        -- .tutorial\onPress((event) ->
+        --     menu_dlg\hide!
+        --     server = love.thread.getChannel( 'server' )
+        --     mapRequest = {
+        --         request_name: "mapRequest"
+        --         id: "tutorial"
+        --     }
+        --     server\push(mapRequest)
+        --     screen("load")
+        -- )
+        .demo\onPress((event) ->
             menu_dlg\hide!
             server = love.thread.getChannel( 'server' )
             mapRequest = {
-                request_name: "mapRequest"
+                request_name: "startCampaign"
+                id: "An_Orcish_Incursion"
             }
             server\push(mapRequest)
             screen("load")
         )
-        .preferences\onPress((event) ->
-            screen("prefs", "title")
-        )
+        -- .preferences\onPress((event) ->
+        --     screen("prefs", "title")
+        -- )
 
         menu_dlg.quit\onPress((event) -> love.event.quit! )
 
