@@ -1,3 +1,15 @@
 sudo: false
 
 script: pwd; ls; ./make_love; ls -lh distrib
+
+before_deploy:
+    # Set up git user name and tag this commit
+    - git config --local user.name  "fendrin"
+    - git config --local user.email "fendrin@gmx.de"
+    - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+
+deploy:
+    provider: releases
+    api_key: "GITHUB OAUTH TOKEN"
+    file: "distrib/wesnoth-love-win32.exe"
+    skip_cleanup: true
