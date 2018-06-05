@@ -27,7 +27,7 @@ return ( config ) ->
     with config
         .identity = game_id
         .version  = love_version
-        -- .console  = true
+        .console  = true
         with .window
             -- .title      = "#{game_title} | Irdya (v#{irdya_version})"
             -- .icon       = "assets/icons/#{game_id}-icon.png"
