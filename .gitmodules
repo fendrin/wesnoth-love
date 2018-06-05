@@ -26,3 +26,6 @@
 	path = client/lib/splashes
 	url = https://github.com/fendrin/splashes.git
         branch = master
+[submodule "lib/Penlight"]
+	path = lib/Penlight
+	url = https://github.com/stevedonovan/Penlight.git
