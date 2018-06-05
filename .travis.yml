@@ -1,3 +1,3 @@
 sudo: false
 
-script: pwd; ls; ./make_love
+script: pwd; ls; ./make_love; ls -lh distrib
