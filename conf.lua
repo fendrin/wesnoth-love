@@ -12,6 +12,7 @@ local love = love
 
 local search_path = love.filesystem.getRequirePath()
 local paths = {
+    "lib/Penlight/lua",
     "lib",
     "lib/moonscript",
     "client/lib",
