@@ -59,7 +59,6 @@ cd resources/wesnoth-love-win32
 
 rm changes.txt readme.txt love.exe lovec.exe game.ico love.ico
 mv license.txt license_love2d.txt
-cp ../../../assets/images/icons/icon-game.png ./Wesnoth.ico
 cp ../../../README.md ./
 cp ../../../license.txt ./license_wesnoth.txt
 wget https://github.com/luapower/luapower-all/raw/master/bin/mingw32/clib/lpeg.dll
@@ -71,7 +70,6 @@ cd resources/wesnoth-love-win64
 
 rm changes.txt readme.txt love.exe lovec.exe game.ico love.ico
 mv license.txt license_love2d.txt
-cp ../../../assets/images/icons/icon-game.png ./Wesnoth.ico
 cp ../../../README.md ./
 cp ../../../license.txt ./license_wesnoth.txt
 wget https://github.com/luapower/luapower-all/raw/master/bin/mingw64/clib/lpeg.dll
