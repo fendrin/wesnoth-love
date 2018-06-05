@@ -88,15 +88,11 @@ while running
     value = server\demand!
 
     switch value.request_name
-        when "unitsRequest"
-            for side in *wesnoth.sides
-                side.command_name = 'Side'
-                client\push(side)
-            client\push({
-                command_name: "float_label"
-            })
-        when "mapRequest"
-            controller.load_campaign"An_Orcish_Incursion"
+        when "startCampaign"
+            controller.load_campaign(value.id)
+            -- for side in *wesnoth.sides
+            --     side.command_name = 'Side'
+            --     client\push(side)
             board = controller.gameBoard!
             log.info"push map to the client channel"
             board.map.command_name = "map"
