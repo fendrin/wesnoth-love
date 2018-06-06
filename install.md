@@ -1,6 +1,37 @@
 # Installation
 
-## General
+## Players
+
+Sorry, there is no stable release yet.
+
+## Testers
+
+### Windows
+
+Download the latest release from:
+[GitHub](https://github.com/fendrin/wesnoth-love/releases/latest)
+Fetch the "wesnoth-love-win32.exe" from the assets section for a self-extracting archive that should run on all Windows versions >= XP.
+After extracting, double click the "Wesnoth.exe" inside the extracted "wesnoth-love-win32" folder.
+
+### Ubuntu
+```shell
+# love2d and dependencies of wesnoth-love
+sudo add-apt-repository -y 'ppa:bartbes/love-stable'; sudo apt-get update
+sudo apt-get -y install love lua-lpeg wget
+# fetch from github
+wget https://github.com/fendrin/wesnoth-love/releases/latest/assets/Wesnoth.love
+# start the game
+love Wesnoth.love
+```
+Once downloaded and with the dependencies installed, a simple open click onto the Wesnoth.love file in a filebrowser can be used to start the game.
+
+### MacOSX
+
+
+
+## Developers
+
+### General
 
 This are general instructions, for specific operating systems have a look below.
 
@@ -13,7 +44,7 @@ This are general instructions, for specific operating systems have a look below.
   * [lua-lpeg](http://www.inf.puc-rio.br/~roberto/lpeg/)
 * Start the game by executing the love engine with the path to the wesnoth-love directory as argument.
 
-## Ubuntu
+### Ubuntu
 ```shell
 # love2d and dependencies of wesnoth-love
 sudo add-apt-repository -y 'ppa:bartbes/love-stable'; sudo apt-get update
@@ -22,3 +53,4 @@ sudo apt-get -y install love lua-lpeg git
 git clone --recursive https://github.com/fendrin/wesnoth-love.git wesnoth
 # start the game
 ./wesnoth/wesnoth
+```
