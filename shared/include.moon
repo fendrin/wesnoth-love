@@ -107,7 +107,6 @@ include_dir = (path, env) ->
         item_info = fs.getInfo(item_path)
         switch item_info.type
             when "file"
-                print item_path\sub(#item_path - 3)
                 if item_path\sub(#item_path - 3) == ".wsl"
                     ret = load_cfg_file(item_path, env)
             when "directory"
