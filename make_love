@@ -101,6 +101,7 @@ cd ../../../
 mv resources/tmp/$mac_dir64 resources/tmp/wesnoth-love.app
 cd resources/tmp/wesnoth-love.app
 cp ../../lpeg_macos.so ./Contents/MacOS/lpeg.so
+cp ../../lpeg_macos.so ./Contents/Resources/lpeg.so
 
 cd ..
 
