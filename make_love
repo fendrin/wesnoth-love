@@ -6,91 +6,116 @@ win_dir64="love-11.1.0-win64"
 win_zip32="love-11.1-win32.zip"
 win_dir32="love-11.1.0-win32"
 
-#if [ ! -d $create_dir ]; then
-    mkdir -p $create_dir/resources
-#fi
+mac_zip64="love-11.1-macos.zip"
+mac_dir64="love.app"
 
-if [ -f $create_dir/Wesnoth.love ]; then
-    rm $create_dir/Wesnoth.love
+if [ -d $create_dir/resources/tmp ]; then
+    rm -rf $create_dir/resources/tmp
 fi
 
-if [ -f $create_dir/wesnoth-love-win64.zip ]; then
-    rm $create_dir/wesnoth-love-win64.zip
-fi
-if [ -f $create_dir/wesnoth-love-win32.zip ]; then
-    rm $create_dir/wesnoth-love-win32.zip
-fi
+mkdir -p $create_dir/resources/tmp
+rm $create_dir/*
 
+# create the .love file
 zip -q -9 -r --exclude=*.git* --exclude=*distrib* $create_dir/Wesnoth.love .
 
+# fetch the resources
 cd $create_dir/resources
+if [ ! -f $mac_zip64 ]; then
+    #echo "Love win zip File not found!"
+    wget https://bitbucket.org/rude/love/downloads/$mac_zip64
+fi
 if [ ! -f $win_zip32 ]; then
     #echo "Love win zip File not found!"
-    wget -q https://bitbucket.org/rude/love/downloads/$win_zip32
+    wget https://bitbucket.org/rude/love/downloads/$win_zip32
 fi
 if [ ! -f $win_zip64 ]; then
     #echo "Love win zip File not found!"
-    wget -q https://bitbucket.org/rude/love/downloads/$win_zip64
+    wget https://bitbucket.org/rude/love/downloads/$win_zip64
+fi
+if [ ! -f lpeg_win32.dll ]; then
+    wget https://github.com/luapower/luapower-all/raw/master/bin/mingw32/clib/lpeg.dll
+    mv lpeg.dll lpeg_win32.dll
+fi
+if [ ! -f lpeg_win64.dll ]; then
+    wget https://github.com/luapower/luapower-all/raw/master/bin/mingw64/clib/lpeg.dll
+    mv lpeg.dll lpeg_win64.dll
+fi
+if [ ! -f lpeg_macos.so ]; then
+    wget https://github.com/luapower/luapower-all/raw/master/bin/osx64/clib/lpeg.so
+    mv lpeg.so lpeg_macos.so
 fi
 
-if [ ! -d $win_dir32 ]; then
-    #echo "Love win32 dir not found!"
-    unzip -q $win_zip32
+if [ ! -f unz552x.zip ]; then
+    wget ftp://ftp.info-zip.org/pub/infozip/unix/freebsd/unz552x.zip
 fi
-if [ ! -d $win_dir64 ]; then
-    #echo "Love win64 dir not found!"
-    unzip -q $win_zip64
+if [ ! -f unzipsfx ]; then
+    unzip unz552x.zip unzipsfx
 fi
 
-cd ..
 
-cat resources/$win_dir32/love.exe Wesnoth.love > resources/$win_dir32/Wesnoth.exe
-cat resources/$win_dir64/love.exe Wesnoth.love > resources/$win_dir64/Wesnoth.exe
-
-if [ -d resources/wesnoth-love-win64 ]; then
-    rm -r resources/wesnoth-love-win64
+if [ ! -f unz600xn.exe ]; then
+    wget ftp://ftp.info-zip.org/pub/infozip/win32/unz600xn.exe
 fi
-if [ -d resources/wesnoth-love-win32 ]; then
-    rm -r resources/wesnoth-love-win32
+if [ ! -f unzipsfx.exe ]; then
+    unzip unz600xn.exe unzipsfx.exe
 fi
 
-mv resources/$win_dir32 resources/wesnoth-love-win32
-cd resources/wesnoth-love-win32
+# unpack resources
+cd tmp
+
+unzip -q ../$mac_zip64
+unzip -q ../$win_zip32
+unzip -q ../$win_zip64
+
+cd ../..
+
+cp Wesnoth.love resources/tmp/$mac_dir64/Contents/Resources/wesnoth-love.love
+cp ../utils/Info.plist resources/tmp/$mac_dir64/Contents/Info.plist
+cat resources/tmp/$win_dir32/love.exe Wesnoth.love > resources/tmp/$win_dir32/Wesnoth.exe
+cat resources/tmp/$win_dir64/love.exe Wesnoth.love > resources/tmp/$win_dir64/Wesnoth.exe
+
+
+mv resources/tmp/$win_dir32 resources/tmp/wesnoth-love-win32
+cd resources/tmp/wesnoth-love-win32
 
 rm changes.txt readme.txt love.exe lovec.exe game.ico love.ico
 mv license.txt license_love2d.txt
-cp ../../../README.md ./
-cp ../../../license.txt ./license_wesnoth.txt
-wget https://github.com/luapower/luapower-all/raw/master/bin/mingw32/clib/lpeg.dll
+cp ../../../../README.md ./
+cp ../../../../license.txt ./license_wesnoth.txt
+cp ../../lpeg_win32.dll ./lpeg.dll
+
+cd ../../../
+
+mv resources/tmp/$win_dir64 resources/tmp/wesnoth-love-win64
+cd resources/tmp/wesnoth-love-win64
+
+rm changes.txt readme.txt love.exe lovec.exe game.ico love.ico
+mv license.txt license_love2d.txt
+cp ../../../../README.md ./
+cp ../../../../license.txt ./license_wesnoth.txt
+cp ../../lpeg_win64.dll ./lpeg.dll
+
+cd ../../../
+
+mv resources/tmp/$mac_dir64 resources/tmp/wesnoth-love.app
+cd resources/tmp/wesnoth-love.app
+cp ../../lpeg_macos.so ./Contents/MacOS/lpeg.so
+
+cd ..
+
+zip -q -9 -r -y wesnoth-love-macos.zip wesnoth-love.app
+zip -q -9 -r wesnoth-love-win64.zip wesnoth-love-win64
+zip -q -9 -r wesnoth-love-win32.zip wesnoth-love-win32
+mv wesnoth-love-macos.zip ../../
+mv wesnoth-love-win64.zip ../../
+mv wesnoth-love-win32.zip ../../
 
 cd ../../
 
-mv resources/$win_dir64 resources/wesnoth-love-win64
-cd resources/wesnoth-love-win64
-
-rm changes.txt readme.txt love.exe lovec.exe game.ico love.ico
-mv license.txt license_love2d.txt
-cp ../../../README.md ./
-cp ../../../license.txt ./license_wesnoth.txt
-wget https://github.com/luapower/luapower-all/raw/master/bin/mingw64/clib/lpeg.dll
-
-cd ..
-
-zip -q -9 -r wesnoth-love-win64.zip wesnoth-love-win64
-zip -q -9 -r wesnoth-love-win32.zip wesnoth-love-win32
-rm -r wesnoth-love-win64
-rm -r wesnoth-love-win32
-mv wesnoth-love-win64.zip ../
-mv wesnoth-love-win32.zip ../
-
-cd resources
-
-wget ftp://ftp.info-zip.org/pub/infozip/win32/unz600xn.exe
-unzip unz600xn.exe unzipsfx.exe
-
-cd ..
-
 cat resources/unzipsfx.exe wesnoth-love-win64.zip > wesnoth-love-win64.exe
 cat resources/unzipsfx.exe wesnoth-love-win32.zip > wesnoth-love-win32.exe
+cat resources/unzipsfx     wesnoth-love-macos.zip > wesnoth-love-macos.exe
 zip -A wesnoth-love-win64.exe
 zip -A wesnoth-love-win32.exe
+zip -A wesnoth-love-macos.exe
