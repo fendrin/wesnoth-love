@@ -1,12 +1,14 @@
 sudo: false
 
-script: ./make_love
 
 #before_deploy:
     # Set up git user name and tag this commit
 #    - git config --local user.name  "fendrin"
 #    - git config --local user.email "fendrin@gmx.de"
 #    - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+
+before_deploy:
+    ./make_love
 
 deploy:
     provider: releases
