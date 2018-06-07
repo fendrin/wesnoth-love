@@ -1,8 +1,10 @@
 #/bin/bash
 
-dpkg-buildpackage -us -uc
-
 create_dir="distrib"
+
+dpkg-buildpackage -us -uc
+cp ../wesnoth-love_0.0.1-1_all.deb $create_dir
+
 win_zip64="love-11.1-win64.zip"
 win_dir64="love-11.1.0-win64"
 win_zip32="love-11.1-win32.zip"

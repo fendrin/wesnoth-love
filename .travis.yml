@@ -24,7 +24,7 @@ deploy:
         - distrib/wesnoth-love-win64.zip
         - distrib/wesnoth-love-macos.exe
         - distrib/wesnoth-love-macos.zip
-        - ../wesnoth-love_0.0.1-1_all.deb
+        - distrib/wesnoth-love_0.0.1-1_all.deb
     skip_cleanup: true
     on:
         repo: fendrin/wesnoth-love
