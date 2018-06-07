@@ -1,5 +1,7 @@
 #/bin/bash
 
+dpkg-buildpackage -us -uc
+
 create_dir="distrib"
 win_zip64="love-11.1-win64.zip"
 win_dir64="love-11.1.0-win64"
