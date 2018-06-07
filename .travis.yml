@@ -10,7 +10,8 @@ script: /bin/true
 #    - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 
 before_deploy:
-    ./make_love
+    - sudo apt-get install fakeroot
+    - ./make_love
 
 deploy:
     provider: releases
