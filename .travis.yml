@@ -10,7 +10,7 @@ script: /bin/true
 #    - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 
 before_deploy:
-    - sudo apt-get install fakeroot
+    - sudo apt-get install fakeroot debhelper
     - ./make_love
 
 deploy:
