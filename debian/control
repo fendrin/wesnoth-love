@@ -1,0 +1,15 @@
+Source: wesnoth-love
+Section: games
+Priority: extra
+Maintainer: Fabian Mueller <fendrin@gmx.de>
+Uploaders: Fabian Mueller <fendrin@gmx.de>
+Build-Depends: debhelper (>= 10), zip
+Standards-Version: 3.9.8
+Homepage: https://github.com/fendrin/wesnoth-love
+Vcs-Git: https://github.com/fendrin/wesnoth-love.git
+Vcs-Browser: https://github.com/fendrin/wesnoth-love
+
+Package: wesnoth-love
+Architecture: all
+Depends: love (>=11.1ppa1), lua-lpeg, ${misc:Depends}
+Description: Port of the turn based strategy game 'Wesnoth' to the love2d engine. Early development, not playable yet.

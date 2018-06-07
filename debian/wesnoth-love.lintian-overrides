@@ -1,0 +1,2 @@
+#upstream do not include a changelog in the source.
+wesnoth-love binary: no-upstream-changelog

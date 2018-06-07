@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Wesnoth-Love
+Comment=
+Exec=wesnoth-love
+Icon=love-app
+Terminal=false
+Type=Application
+Categories=Game;StrategyGame;
+GenericName=
+Keywords=game
