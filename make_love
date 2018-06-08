@@ -53,12 +53,12 @@ if [ ! -f lpeg_macos.so ]; then
     mv lpeg.so lpeg_macos.so
 fi
 
-if [ ! -f unz552x.zip ]; then
-    wget ftp://ftp.info-zip.org/pub/infozip/unix/freebsd/unz552x.zip
-fi
-if [ ! -f unzipsfx ]; then
-    unzip unz552x.zip unzipsfx
-fi
+#if [ ! -f unz552x.zip ]; then
+#    wget ftp://ftp.info-zip.org/pub/infozip/unix/freebsd/unz552x.zip
+#fi
+#if [ ! -f unzipsfx ]; then
+#    unzip unz552x.zip unzipsfx
+#fi
 
 
 if [ ! -f unz600xn.exe ]; then
@@ -123,7 +123,7 @@ cd ../../
 
 cat resources/unzipsfx.exe wesnoth-love-win64.zip > wesnoth-love-win64.exe
 cat resources/unzipsfx.exe wesnoth-love-win32.zip > wesnoth-love-win32.exe
-cat resources/unzipsfx     wesnoth-love-macos.zip > wesnoth-love-macos.exe
+#cat resources/unzipsfx     wesnoth-love-macos.zip > wesnoth-love-macos.exe
 zip -A wesnoth-love-win64.exe
 zip -A wesnoth-love-win32.exe
-zip -A wesnoth-love-macos.exe
+#zip -A wesnoth-love-macos.exe

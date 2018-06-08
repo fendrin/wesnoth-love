@@ -1,12 +1,6 @@
 sudo: false
 
-
 script: /bin/true
-
-#before_deploy:
-    # Set up git user name and tag this commit
-#    - git config --local user.name  "fendrin"
-#    - git config --local user.email "fendrin@gmx.de"
 #    - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 
 before_deploy:
@@ -23,7 +17,7 @@ deploy:
         - distrib/wesnoth-love-win32.zip
         - distrib/wesnoth-love-win64.exe
         - distrib/wesnoth-love-win64.zip
-        - distrib/wesnoth-love-macos.exe
+#        - distrib/wesnoth-love-macos.exe
         - distrib/wesnoth-love-macos.zip
         - distrib/wesnoth-love_all.deb
     skip_cleanup: true
