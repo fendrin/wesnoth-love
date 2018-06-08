@@ -3,7 +3,7 @@ Section: games
 Priority: extra
 Maintainer: Fabian Mueller <fendrin@gmx.de>
 Uploaders: Fabian Mueller <fendrin@gmx.de>
-Build-Depends: debhelper (>= 10), zip
+Build-Depends: debhelper (>= 9), zip
 Standards-Version: 3.9.8
 Homepage: https://github.com/fendrin/wesnoth-love
 Vcs-Git: https://github.com/fendrin/wesnoth-love.git
