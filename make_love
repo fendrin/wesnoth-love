@@ -23,7 +23,8 @@ fi
 mkdir -p $create_dir/resources/tmp
 
 # create the .love file
-zip -q -9 -r --exclude=*.git* --exclude=*debian* --exclude=*distrib* $create_dir/wesnoth.love .
+# this is currently done by dpkg-buildpackage, enable if it is seperated
+# zip -q -9 -r --exclude=*.git* --exclude=*debian* --exclude=*distrib* $create_dir/wesnoth.love .
 
 # fetch the resources
 cd $create_dir/resources
@@ -78,8 +79,8 @@ cd ../..
 
 cp wesnoth.love resources/tmp/$mac_dir64/Contents/Resources/wesnoth-love.love
 cp ../utils/Info.plist resources/tmp/$mac_dir64/Contents/Info.plist
-cat resources/tmp/$win_dir32/love.exe wesnoth.love > resources/tmp/$win_dir32/Wesnoth.exe
-cat resources/tmp/$win_dir64/love.exe wesnoth.love > resources/tmp/$win_dir64/Wesnoth.exe
+cat resources/tmp/$win_dir32/love.exe wesnoth.love > resources/tmp/$win_dir32/wesnoth-love.exe
+cat resources/tmp/$win_dir64/love.exe wesnoth.love > resources/tmp/$win_dir64/wesnoth-love.exe
 
 
 mv resources/tmp/$win_dir32 resources/tmp/wesnoth-love-win32
