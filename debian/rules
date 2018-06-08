@@ -11,4 +11,4 @@ override_dh_auto_clean:
 	dh_auto_clean
 
 override_dh_auto_build:
-	zip -q -9 -r --exclude=*.git* --exclude=*distrib* distrib/wesnoth.love  .
+	zip -q -9 -r --exclude=*.git* --exclude=*distrib* --exclude=*debian* distrib/wesnoth.love  .

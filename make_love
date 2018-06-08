@@ -21,7 +21,7 @@ mkdir -p $create_dir/resources/tmp
 rm $create_dir/*
 
 # create the .love file
-zip -q -9 -r --exclude=*.git* --exclude=*distrib* $create_dir/Wesnoth.love .
+zip -q -9 -r --exclude=*.git* --exclude=*debian* --exclude=*distrib* $create_dir/Wesnoth.love .
 
 # fetch the resources
 cd $create_dir/resources
