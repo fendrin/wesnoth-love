@@ -10,7 +10,7 @@ Testers
 -------
 
 ### Windows
-Fetch the "wesnoth-love-win32.exe" of the [latest release](
+Fetch the *wesnoth-love-win32.exe* of the [latest release](
 https://github.com/fendrin/wesnoth-love/releases/latest/
 ) at github.<br>
 The file is a self-extracting archive that should run on all Windows versions >= XP.<br>
@@ -23,7 +23,7 @@ Pure zip archives and 64-bit version are also available.
 sudo add-apt-repository -y 'ppa:bartbes/love-stable'; sudo apt-get update
 sudo apt-get -y install love lua-lpeg
 ```
-Fetch the "wesnoth-love_all.deb" of the [latest release](
+Fetch the *wesnoth-love_all.deb* of the [latest release](
 https://github.com/fendrin/wesnoth-love/releases/latest/
 ) at github.
 
@@ -36,7 +36,7 @@ Once downloaded and with the dependencies installed, a simple open click onto th
 
 ### MacOSX
 
-Fetch the "wesnoth-love-macos.zip" of the [latest release](
+Fetch the *wesnoth-love-macos.zip* of the [latest release](
 https://github.com/fendrin/wesnoth-love/releases/latest/
 ) at github.<br>
 unzip and then TODO
