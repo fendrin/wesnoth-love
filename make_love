@@ -1,9 +1,12 @@
 #/bin/bash
 
 create_dir="distrib"
+rm $create_dir/*
 
 dpkg-buildpackage -us -uc
-cp ../wesnoth-love_0.0.1-1_all.deb $create_dir
+cp ../wesnoth-love_*_all.deb $create_dir/wesnoth-love_all.deb
+
+ls -lh $create_dir
 
 win_zip64="love-11.1-win64.zip"
 win_dir64="love-11.1.0-win64"
@@ -18,7 +21,6 @@ if [ -d $create_dir/resources/tmp ]; then
 fi
 
 mkdir -p $create_dir/resources/tmp
-rm $create_dir/*
 
 # create the .love file
 zip -q -9 -r --exclude=*.git* --exclude=*debian* --exclude=*distrib* $create_dir/Wesnoth.love .
