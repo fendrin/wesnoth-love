@@ -19,11 +19,11 @@ After extracting, double click the "Wesnoth.exe" inside the extracted "wesnoth-l
 sudo add-apt-repository -y 'ppa:bartbes/love-stable'; sudo apt-get update
 sudo apt-get -y install love lua-lpeg wget
 # fetch from github
-wget https://github.com/fendrin/wesnoth-love/releases/latest/assets/Wesnoth.love
+wget https://github.com/fendrin/wesnoth-love/releases/latest/assets/wesnoth.love
 # start the game
-love Wesnoth.love
+love wesnoth.love
 ```
-Once downloaded and with the dependencies installed, a simple open click onto the Wesnoth.love file in a filebrowser can be used to start the game.
+Once downloaded and with the dependencies installed, a simple open click onto the wesnoth.love file in a filebrowser can be used to start the game.
 
 ### MacOSX
 

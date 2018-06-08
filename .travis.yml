@@ -18,7 +18,7 @@ deploy:
     api_key:
         secure: dRpTl4okAqznUHwxdgMcfd+P3C/0dL/y+p01jMwUszpFuyN3ynq4aySWj7+wnKWZqAIMuaWD8WdmJoWT/9lsqBQW8UK6cXoWTX5nW/O2wjMg0yUhaWDdcjlTrmjI+iwMTAYAMG+icD64FlvvBy97rlmOWuqc43oU78YSuI4x4whm4j+O6Z98KA/LXg5R5+53qgK5JJ/XDcUEADIdP4idflJpL5JwPdJQiepeOc1tDCAVoGt9s0Mzr/PzcJ4XqDNq7N+1uH7Xrq6bTE1XA3zTH7QaR3VAlkhSSLl6gLa3ijRX5Fz124sPhjWkHsHOjVfQtr7v83lFoHZUrqXaAsCqDXR8nsXjUtnHhmewCAQqhS7xvsilSaJTopvRzWafCbEWjUgniqGQhnuGHyr07ShToVGhd5UcC1OnpXASvR166ktbYBqNNlcLza2yA7XnggwMkubkDOKZqSxmcMSz+laRrYdcAXgFtd6PaP+N1RUUx343lCAvL/n31IcYwEgaIxBxmphRiK236LHtA8H6wlVSHWvVn6OKfz7hJBMIkWGb0bK9XmN6gMrwaJ7b3jSbu9obrMKuQvTQzTZOqvl6d0Nmy4M9mH6YRuRVQk4KlD0bS4Q/OYgPPV/Y36r1EzfedowLuP5upV7UlbQO9NkqvYxjesMH32LoK0uq45tgdvlo0kg=
     file:
-        - distrib/Wesnoth.love
+        - distrib/wesnoth.love
         - distrib/wesnoth-love-win32.exe
         - distrib/wesnoth-love-win32.zip
         - distrib/wesnoth-love-win64.exe
