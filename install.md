@@ -11,7 +11,7 @@ Sorry, there is no stable release yet.
 Download the latest release from:
 [GitHub](https://github.com/fendrin/wesnoth-love/releases/latest)
 Fetch the "wesnoth-love-win32.exe" from the assets section for a self-extracting archive that should run on all Windows versions >= XP.
-After extracting, double click the "Wesnoth.exe" inside the extracted "wesnoth-love-win32" folder.
+After extracting, double click the "wesnoth-love.exe" inside the extracted "wesnoth-love-win32" folder.
 
 ### Ubuntu
 ```shell
