@@ -137,12 +137,12 @@ draw = (dlg, gameMap_offset_x, gameMap_offset_y) ->
                 offset_x, offset_y)
 
     -- draw the gameMap
-    -- top_left = love.graphics.newQuad(0, 0, gameMap_w,
-        -- gameMap_h, gameMap\getDimensions!)
+    board = love.graphics.newQuad(0, 0, gameMap_w,
+        gameMap_h, gameMap\getDimensions!)
 
     love.graphics.setCanvas!
-    -- love.graphics.draw(gameMap, top_left, gameMap_x, gameMap_y)
-    love.graphics.draw(gameMap, gameMap_x, gameMap_y)
+    love.graphics.draw(gameMap, board, gameMap_x, gameMap_y)
+
 
 -- update_terrain = (x, y) ->
 --     dlg.secondaryUnitLocation.text = "#{x}/#{y}"
