@@ -47,11 +47,6 @@ resize = ( w, h ) ->
 left_mouse_press = (dlg, x, y) ->
     gameState = gameState
 
-    -- print "mouse left button pressed, selected hex:"
-    -- require"moon".p selected_hex
-    -- print "hovered_hex hex:"
-    -- require"moon".p hovered_hex
-
     if selected_hex.x == hovered_hex.x and
             selected_hex.y == hovered_hex.y
         selected_hex.x = nil
