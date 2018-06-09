@@ -32,7 +32,6 @@ sudo dpkg -i wesnoth-love_all.deb
 # start the game
 wesnoth-love
 ```
-Once downloaded and with the dependencies installed, a simple open click onto the wesnoth.love file in a filebrowser can be used to start the game.
 
 ### MacOSX
 
@@ -56,6 +55,8 @@ This are general instructions, for specific operating systems have a look below.
 * Install the dependencies
   * [lua-lpeg](http://www.inf.puc-rio.br/~roberto/lpeg/)
 * Start the game by executing the love engine with the path to the wesnoth-love directory as argument.
+
+Once downloaded and with the dependencies installed, a simple open click onto the wesnoth.love file in a filebrowser can be used to start the game.
 
 ### Ubuntu
 ```shell
