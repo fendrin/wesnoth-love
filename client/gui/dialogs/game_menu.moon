@@ -10,7 +10,7 @@ main_menu = (screen) ->
     with menu_dlg
         .resume\onPress(     (event) -> screen"game")
         -- .preferences\onPress((event) -> screen("prefs", "menu"))
-        .quit\onPress(       (event) -> screen"title")
+        -- .quit\onPress(       (event) -> screen"title")
         .exit\onPress(       (event) -> love.event.quit!)
 
     log.info"dialog show"
