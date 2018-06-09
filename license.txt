@@ -27,6 +27,21 @@ This distribution contains code from the following projects (full license text b
     License: MIT
     Copyright (c) 2017 May W.
 
+ - lpeg
+    Website: http://www.inf.puc-rio.br/~roberto/lpeg/
+    License: MIT
+    Copyright © 2007-2017 Lua.org, PUC-Rio.
+
+ - splashes
+    Website: https://github.com/love2d-community/splashes
+    License: zlib
+    Copyright (c) 2016 love-community members
+
+ - Penlight
+    Website: https://github.com/stevedonovan/Penlight
+    License: MIT
+    Copyright (C) 2009-2016 Steve Donovan, David Manura.
+
 
 MIT/Expat
 	Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -152,3 +167,21 @@ Yoyodyne, Inc., hereby disclaims all copyright interest in the program `Gnomovis
 <signature of Ty Coon>, 1 April 1989 Ty Coon, President of Vice
 
 This General Public License does not permit incorporating your program into proprietary programs. If your program is a subroutine library, you may consider it more useful to permit linking proprietary applications with the library. If this is what you want to do, use the GNU Lesser General Public License instead of this License.
+
+
+zlib
+This software is provided 'as-is', without any express or implied
+warranty. In no event will the authors be held liable for any damages
+arising from the use of this software.
+
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must not
+   claim that you wrote the original software. If you use this software
+   in a product, an acknowledgement in the product documentation would be
+   appreciated but is not required.
+2. Altered source versions must be plainly marked as such, and must not be
+   misrepresented as being the original software.
+3. This notice may not be removed or altered from any source distribution.
