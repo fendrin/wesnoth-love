@@ -252,7 +252,7 @@ terrainInfo = (sort) -> {
 moveType = -> {
     height: "auto"
     width: "auto"
-     -- slices: "assets/data/core/images/attacks/blank-attack.png"
+    slices: "assets/data/core/images/attacks/blank-attack.png"
     padding: 5
     margin: 0
     {
@@ -598,7 +598,7 @@ sideBar = {
         minwidth: 700
     }
     {
-        type: 'sash'
+        -- type: 'sash'
         width: 8
         slices: "assets/images/dialogs/thin_translucent-border-left.png"
     }
