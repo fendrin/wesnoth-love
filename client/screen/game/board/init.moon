@@ -14,7 +14,7 @@ tile_h = 72
 max_x_ = (dlg, gameMap_hex_w, border_size) ->
     widget_w = dlg.gameMap\getWidth!
     display_hex_w = math.floor(widget_w / tile_w)
-    return (gameMap_hex_w + 2*border_size - display_hex_w - 0.5) * tile_w
+    return (gameMap_hex_w + 2*border_size - display_hex_w - 0.75) * tile_w
 
 max_y_ = (dlg, gameMap_hex_h, border_size) ->
     widget_h = dlg.gameMap\getHeight!
