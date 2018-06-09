@@ -455,7 +455,7 @@ sideBox = {
     height: "auto"
     width: "auto"
     size: 14
-     -- slices: "assets/data/core/images/attacks/blank-attack.png"
+    slices: "assets/data/core/images/attacks/blank-attack.png"
     infoPair(villageInfo!, incomeInfo!)
     infoPair(unitsInfo!, upkeepInfo!)
     infoPair(
