@@ -20,7 +20,9 @@ minimap_pixel_to_hex = (x, y) ->
     return pixel_to_hex(x/minimap_scale, y/minimap_scale)
 
 
+drawn = false
 setup = (dlg) ->
+    drawn = false
     gameState = gameState
 
     gameMap_hex_w, gameMap_hex_h, border_size = get_map_size(gameState)
@@ -78,7 +80,6 @@ draw_ = (dlg) ->
 
 
 
-drawn = false
 draw = (dlg, gameMap_offset_x, gameMap_offset_y) ->
     unless drawn
         draw_(dlg)
