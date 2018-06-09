@@ -546,6 +546,7 @@ bottom = {
     }
     {
         flow: 'x'
+        slices: "assets/data/core/images/attacks/blank-attack.png"
         {
             icon: "assets/data/core/images/flags/wood-elvish-flag-icon2x.png"
             align: "center, middle"
