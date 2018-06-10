@@ -109,8 +109,10 @@ mv resources/tmp/$mac_dir64 resources/tmp/wesnoth-love.app
 cd resources/tmp/wesnoth-love.app
 cp ../../lpeg_macos.so ./Contents/MacOS/lpeg.so
 cp ../../lpeg_macos.so ./Contents/Resources/lpeg.so
+cd Contents/Resources
+zip -rv wesnoth-love.love lpeg.so
 
-cd ..
+cd ../../../
 
 zip -q -9 -r -y wesnoth-love-macos.zip wesnoth-love.app
 zip -q -9 -r wesnoth-love-win64.zip wesnoth-love-win64
