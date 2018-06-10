@@ -1,4 +1,4 @@
-Wesnoth for Löve
+Wesnoth for Löve [![LOVE](https://img.shields.io/badge/L%C3%96VE-1.11.0-EA316E.svg)](http://love2d.org/)
 ================
 A port of the Wesnoth Game to the Love2d Engine.
 
