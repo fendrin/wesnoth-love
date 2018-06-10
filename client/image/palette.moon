@@ -1,5 +1,5 @@
 ----
--- Copyright (C) 2018 by Fabian Mueller <fendrin@gmx.de>
+-- Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
 -- SPDX-License-Identifier: GPL-2.0+
 
 recolor_range = require"client.color_range"
