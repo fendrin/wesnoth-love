@@ -17,6 +17,7 @@ local paths = {
     "lib/moonscript",
     "client/lib",
     "server/lib",
+    "server/lib/wesnoth",
     "shared"
 }
 
