@@ -18,6 +18,7 @@ local paths = {
     "client/lib",
     "server/lib",
     "server/lib/wesnoth",
+    "server/lib/wesnoth/utils",
     "shared"
 }
 

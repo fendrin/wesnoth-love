@@ -14,7 +14,7 @@ load = ( arg ) ->
         for path in *paths
             str ..= stringx.replace(path, ';', spacer)
 
-        LOG_LUA  = (require"shared.log")"lua"
+        LOG_LUA  = (require"log")"lua"
         LOG_LUA.debug('Search Paths:' .. spacer .. str)
 
 

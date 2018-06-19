@@ -4,7 +4,7 @@ moonscript = require"moonscript"
 import setfenv from require"pl.utils"
 
 get = require"shared.filesystem"
-LOG_FS = (require"shared.log")"filesystem"
+LOG_FS = (require"log")"filesystem"
 
 love = love
 fs = love.filesystem

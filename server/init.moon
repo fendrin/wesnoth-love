@@ -4,7 +4,7 @@
 
 
 love = love
-log  = (require"shared.log")"server"
+log  = (require"log")"server"
 
 log.info"Start..."
 
