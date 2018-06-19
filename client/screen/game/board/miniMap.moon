@@ -1,5 +1,5 @@
 love = love
-import get_map_size, get_terrain from require"wesnoth.map"
+import get_map_size, get_terrain from require"wesnoth.api.map"
 tile_h = 72
 tile_w = 54
 draw_terrain = require"client.screen.game.board.draw_terrain"

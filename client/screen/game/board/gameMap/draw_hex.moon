@@ -1,6 +1,6 @@
 love = love
-import get_unit    from require"wesnoth.units"
-import get_terrain from require"wesnoth.map"
+import get_unit    from require"wesnoth.api.units"
+import get_terrain from require"wesnoth.api.map"
 
 draw_terrain = require"client.screen.game.board.draw_terrain"
 draw_unit    = require"client.screen.game.board.gameMap.draw_unit"

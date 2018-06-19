@@ -1,6 +1,6 @@
 love = love
-import get_map_size from require"wesnoth.map"
-import get_unit     from require"wesnoth.units"
+import get_map_size from require"wesnoth.api.map"
+import get_unit     from require"wesnoth.api.units"
 pixel_to_hex = require"client.screen.game.board.pixel_to_hex"
 draw_hex     = require"client.screen.game.board.gameMap.draw_hex"
 scroll       = require"client.screen.game.board.gameMap.scroll"

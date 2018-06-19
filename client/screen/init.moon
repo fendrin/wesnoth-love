@@ -5,7 +5,7 @@ log  = (require"log")"Screen"
 
 export gameState = {
     board: {
-        units: (require"wesnoth.unit_map")(30,30)
+        units: (require"wesnoth.utils.unit_map")(30,30)
         sides: {}
     }
 }
