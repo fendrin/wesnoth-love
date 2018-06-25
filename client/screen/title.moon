@@ -120,7 +120,7 @@ close = ->
 
 return (screen) ->
     main_menu = (require"client.gui.dialogs.main_menu")screen
-    log.info"title_screen.load"
+    log.debug"title_screen.load"
 
 
     return {

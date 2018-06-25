@@ -7,7 +7,7 @@ log = (require"log")"gameMenu"
 
 main_menu = (screen) ->
 
-    log.info"game_menu dialog called"
+    log.debug"game_menu dialog called"
 
     menu_dlg = (require"client.gui.dialog")("game_menu")
 
@@ -17,7 +17,6 @@ main_menu = (screen) ->
         -- .quit\onPress(       (event) -> screen"title")
         .exit\onPress(       (event) -> love.event.quit!)
 
-    log.info"dialog show"
     return menu_dlg
 
 return main_menu

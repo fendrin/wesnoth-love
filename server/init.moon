@@ -12,7 +12,7 @@ client = love.thread.getChannel( 'client' )
 server = love.thread.getChannel( 'server' )
 
 
-log.info'start gameLoop'
+log.debug'start gameLoop'
 running = true
 
 wrapInArray = (cfg) ->
@@ -94,7 +94,7 @@ while running
             --     side.command_name = 'Side'
             --     client\push(side)
             board = controller.gameBoard!
-            log.info"push map to the client channel"
+            log.debug"push map to the client channel"
             board.map.command_name = "map"
             client\push(board.map)
             unitTransfer!

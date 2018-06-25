@@ -8,7 +8,7 @@ log = (require"log")"mainMenu"
 
 main_menu = (screen) ->
 
-    log.info"main_menu dialog called"
+    log.debug"main_menu dialog called"
     menu_dlg = (require"client.gui.dialog")("main_menu")
 
     with menu_dlg
