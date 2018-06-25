@@ -87,19 +87,26 @@ image_path = (path) ->
     unless image_cache[path]
         if get_binary(raw_path)
 
-            if fields[2] == "RC"
-                image = love.image.newImageData(get_binary(raw_path))
+            ext = fields[2]
+            switch ext
+                when "RC"
+                    image = love.image.newImageData(get_binary(raw_path))
 
-                range   = get_Color_Range(Color_Range)
-                palette = Color_Palette.magenta
+                    range   = get_Color_Range(Color_Range)
+                    palette = Color_Palette.magenta
 
-                recolor_range = require"client.image.color_range"
-                map_rgb = recolor_range(range, palette)
+                    recolor_range = require"client.image.color_range"
+                    map_rgb = recolor_range(range, palette)
 
-                image_cache[path] = love.graphics.newImage(
-                    recolor_image(image, map_rgb) )
-            else
-                image_cache[path] = love.graphics.newImage(get_binary path)
+                    image_cache[path] = love.graphics.newImage(
+                        recolor_image(image, map_rgb) )
+                when "RIGHT()"
+                    --- @todo this is only a stub
+                    image_cache[path] = love.graphics.newImage(
+                        get_binary raw_path)
+                else
+                    image_cache[path] = love.graphics.newImage(
+                        get_binary path)
 
     return image_cache[path]
 
