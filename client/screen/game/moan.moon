@@ -14,13 +14,13 @@ setup = ->
 
 
 draw = ->
-    love.graphics.setCanvas(moanCanvas)
+    -- love.graphics.setCanvas(moanCanvas)
     moan.draw!
-    love.graphics.setCanvas!
+    -- love.graphics.setCanvas!
 
-    love.graphics.setBlendMode("alpha", "premultiplied")
-    love.graphics.draw(moanCanvas)
-    love.graphics.setBlendMode("alpha")
+    -- love.graphics.setBlendMode("alpha", "premultiplied")
+    -- love.graphics.draw(moanCanvas)
+    -- love.graphics.setBlendMode("alpha")
 
 
 mousepressed = (x, y, button, istouch) ->
@@ -50,9 +50,7 @@ update = (dt) ->
 
 
 handle_command = (command) ->
-    assert(false)
-    if command.command_name == "Message"
-        require'moon'.p command
+    if command.command_name == "message"
         local portrait
         if command.image
             portrait = get_image(command.image)

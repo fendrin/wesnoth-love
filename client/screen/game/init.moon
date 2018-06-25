@@ -10,7 +10,7 @@ moan  = require"client.screen.game.moan"
 
 open = ->
     board.setup(dlg)
-    -- moan.setup!
+    moan.setup!
     love.mouse.setVisible( true )
     board.resize(love.graphics.getDimensions!)
     dlg\show!
@@ -20,19 +20,19 @@ close = -> dlg\hide!
 
 
 handle_command = (command) ->
-    assert(false)
+    -- assert(false)
     return true if moan.handle_command(command)
     return false
 
 
 update = (dt) ->
-    -- moan.update(dt)
+    moan.update(dt)
     board.update(dlg, dt)
 
 
 draw = ->
-    -- moan.draw!
     board.draw(dlg)
+    moan.draw!
 
 
 -- @todo

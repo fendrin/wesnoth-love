@@ -51,6 +51,9 @@ handle_command = (command) ->
         when "story"
             screen("story", command)
             return true
+        when "message"
+            screens.game.handle_command(command)
+            return true
 
     return false
 
@@ -58,10 +61,14 @@ handle_command = (command) ->
 handle_server = ->
     client = love.thread.getChannel( 'client' )
     if command = client\pop!
-        log.info"Handle Command: #{command.command_name}"
-        return true if handle_command(command)
+        log.debug"Handle Command: #{command.command_name}"
+        if handle_command(command)
+            log.debug"Command #{command.command_name} handled by screen itself."
+            return true
         if handler = screens[active_screen].handle_command
-            return true if handler(command)
+            if handler(command)
+                log.debug"Command #{command.command_name} handled by #{active_screen}."
+                return true
         assert(false,
             "unhandled command #{command.command_name} by #{active_screen}")
     return true
