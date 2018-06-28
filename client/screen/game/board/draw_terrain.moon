@@ -1,16 +1,18 @@
 love = love
 get  = require"filesystem"
 
-local grass, water, otherwater, hills, mountain, sand, forest, castle, keep, village
+local grass, water, otherwater, hills, mountain, sand, forest, forestedHills, castle, keep, village
 
 with love.graphics
-    grass =      .newImage(get.assets("data/core/images/terrain/grass/semi-dry-symbol.png"))
+    grass =      .newImage(get.assets("data/core/images/terrain/grass/green.png"))
     water =      .newImage(get.assets("data/core/images/terrain/water/ocean-tile.png"))
     otherwater = .newImage(get.assets("data/core/images/terrain/water/coast-tile.png"))
     hills =      .newImage(get.assets("data/core/images/terrain/hills/regular.png"))
     mountain =   .newImage(get.assets("data/core/images/terrain/mountains/basic-tile.png"))
     sand =       .newImage(get.assets("data/core/images/terrain/sand/desert.png"))
-    forest =     .newImage(get.assets("data/core/images/terrain/forest/forested-deciduous-summer-hills-tile.png"))
+    forestedHills = .newImage(get.assets(
+        "data/core/images/terrain/forest/forested-deciduous-summer-hills-tile.png"))
+    forest =     .newImage(get.assets("data/core/images/terrain/forest/deciduous-summer-tile.png"))
     castle =     .newImage(get.assets("data/core/images/terrain/castle/castle-tile.png"))
     keep =       .newImage(get.assets("data/core/images/terrain/castle/keep-tile.png"))
     village =    .newImage(get.assets("data/core/images/terrain/village/human-tile.png"))
@@ -32,8 +34,11 @@ draw_terrain = (terrain, x_pos, y_pos) ->
                 .draw(mountain, x_pos, y_pos)
             when "Ds"
                 .draw(sand, x_pos, y_pos)
-            when "Gd^Fds", "Gll^Fds", "Gs^Fds", "Hh^Fds", "Re^Fds", "Gg^Fet", "Gs^Fdw"
+            when "Gd^Fds", "Gll^Fds", "Gs^Fds", "Re^Fds", "Gg^Fet", "Gs^Fdw"
+                .draw(grass, x_pos, y_pos)
                 .draw(forest, x_pos, y_pos)
+            when "Hh^Fds"
+                .draw(forestedHills, x_pos, y_pos)
             when "Ch", "Ce", "Cv", "Ce^Es"
                 .draw(castle, x_pos, y_pos)
             when "Kh", "Ke", "Kv"
