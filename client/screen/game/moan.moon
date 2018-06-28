@@ -22,6 +22,8 @@ draw = ->
     -- love.graphics.draw(moanCanvas)
     -- love.graphics.setBlendMode("alpha")
 
+showingMessage = ->
+    return moan.showingMessage
 
 mousepressed = (x, y, button, istouch) ->
     if moan.showingMessage
@@ -67,6 +69,7 @@ handle_command = (command) ->
 
 {
     :setup
+    :showingMessage
 
     :mousepressed
     :keypressed

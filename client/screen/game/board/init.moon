@@ -3,8 +3,6 @@ miniMap = require"client.screen.game.board.miniMap"
 gameMap = require"client.screen.game.board.gameMap"
 import get_map_size from require"wesnoth.api.map"
 
-gameMap_offset_x = 0
-gameMap_offset_y = 0
 
 -- @todo
 tile_w = 54
@@ -21,6 +19,11 @@ max_y_ = (dlg, gameMap_hex_h, border_size) ->
     display_hex_h = math.floor(widget_h / tile_h)
     return (gameMap_hex_h + 2*border_size - display_hex_h - 0.75) * tile_h
 
+min_x = tile_h / 4
+min_y = tile_h / 2
+gameMap_offset_x = min_x
+gameMap_offset_y = min_y
+
 checkBoundaries = (dlg) ->
 
     gameState = gameState
@@ -29,12 +32,10 @@ checkBoundaries = (dlg) ->
     -- Check boundaries.
     -- Remove this section if you don't wish to be constrained to the map.
     max_x = max_x_(dlg, gameMap_hex_w, border_size)
-    min_x = tile_h / 4
     gameMap_offset_x = max_x if gameMap_offset_x > max_x
     gameMap_offset_x = min_x if gameMap_offset_x < min_x
 
     max_y = max_y_(dlg, gameMap_hex_h, border_size)
-    min_y = tile_h / 2
     gameMap_offset_y = max_y if gameMap_offset_y > max_y
     gameMap_offset_y = min_y if gameMap_offset_y < min_y
 

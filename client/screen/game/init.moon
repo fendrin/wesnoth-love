@@ -26,8 +26,8 @@ handle_command = (command) ->
 
 
 update = (dt) ->
-    moan.update(dt)
-    board.update(dlg, dt)
+    unless moan.update(dt)
+        board.update(dlg, dt)
 
 
 draw = ->
@@ -82,7 +82,8 @@ resize = (w, h) ->
 
 
 mousemoved = (...) ->
-    board.mousemoved(dlg, ...)
+    unless moan.showingMessage!
+        board.mousemoved(dlg, ...)
 
 
 return (scr) ->
