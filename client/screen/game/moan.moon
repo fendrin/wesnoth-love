@@ -4,23 +4,24 @@ love = love
 
 local moanCanvas
 
-setup = ->
-    -- if (not moanCanvas) or dlg.gameMap\getWidth! != moanCanvas\getWidth! or
-    --         dlg.gameMap\getHeight! != moanCanvas\getHeight!
-    width, height = love.graphics.getDimensions!
-    moanCanvas = love.graphics.newCanvas(950, height)
-    -- moanCanvas = love.graphics.newCanvas(
-        -- dlg.gameMap\getWidth! + 3, dlg.gameMap\getHeight!)
+--- @todo get rid of magic number
+magic_border_size = 3
+setup = (dlg) ->
+    width = dlg.gameMap\getWidth!
+    height = dlg.gameMap\getHeight!
+    if (not moanCanvas) or width != moanCanvas\getWidth! or
+            height != moanCanvas\getHeight!
+        moanCanvas = love.graphics.newCanvas(width + magic_border_size, height)
 
 
 draw = ->
-    -- love.graphics.setCanvas(moanCanvas)
+    love.graphics.setCanvas(moanCanvas)
+    love.graphics.clear!
     moan.draw!
-    -- love.graphics.setCanvas!
 
-    -- love.graphics.setBlendMode("alpha", "premultiplied")
-    -- love.graphics.draw(moanCanvas)
-    -- love.graphics.setBlendMode("alpha")
+    love.graphics.setCanvas!
+    love.graphics.draw(moanCanvas)
+
 
 showingMessage = ->
     return moan.showingMessage

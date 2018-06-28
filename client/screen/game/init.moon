@@ -10,7 +10,7 @@ moan  = require"client.screen.game.moan"
 
 open = ->
     board.setup(dlg)
-    moan.setup!
+    moan.setup(dlg)
     love.mouse.setVisible( true )
     board.resize(love.graphics.getDimensions!)
     dlg\show!
