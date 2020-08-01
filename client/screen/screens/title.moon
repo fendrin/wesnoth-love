@@ -2,6 +2,7 @@ love = love
 log  = (require"log")"titleScreen"
 moan = require"client.lib.Moan.Moan"!
 get_image = require"client.image.image_path"
+gameState = gameState
 
 local main_menu
 local width
