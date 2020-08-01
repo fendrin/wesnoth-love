@@ -18,22 +18,12 @@ load = ( arg ) ->
         LOG_LUA.debug('Search Paths:' .. spacer .. str)
 
 
+    require"launcher.preferences"
     -- @todo
     -- save_dir = "saves"
     -- unless love.filesystem.getInfo(save_dir)
     --     love.filesystem.createDirectory(save_dir)
 
-    -- @todo
-    -- LOG_PREF = (require"shared.log")"preferences"
-    export Preferences = {
-        theme: "wesnoth-highres"
-        style: "default"
-    }
-    -- preferences_file = "preferences.moon"
-    -- if love.filesystem.getInfo(preferences_file)
-    --     LOG_PREF.info"Preferences file found"
-    -- else
-    --     LOG_PREF.info"Preferences file *not* found"
 
     -- @todo
     -- config = (require"launcher.cmd_line")(arg)
@@ -45,10 +35,7 @@ load = ( arg ) ->
     thread = love.thread.newThread("server/main.lua")
     thread\start!
 
-    screenID = "splash"
-    screenID = "load"
-    screen = require"client.screen"
-    screen(screenID)
+    require"client"
 
 
 return load
