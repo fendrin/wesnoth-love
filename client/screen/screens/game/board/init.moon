@@ -1,6 +1,6 @@
 love = love
-miniMap = require"client.screen.game.board.miniMap"
-gameMap = require"client.screen.game.board.gameMap"
+miniMap = require"client.screen.screens.game.board.miniMap"
+gameMap = require"client.screen.screens.game.board.gameMap"
 import get_map_size from require"wesnoth.api.map"
 
 

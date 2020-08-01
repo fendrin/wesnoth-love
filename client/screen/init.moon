@@ -33,16 +33,11 @@ screen = (id, parent_id) ->
         alpha = 0
         blend_speed = 4
 
-screens = {
-    game:    (require"client.screen.game")screen
-    title:   (require"client.screen.title")screen
-    menu:    (require"client.screen.game_menu")screen
-    prefs:   (require"client.screen.preferences")screen
-    map:     (require"client.screen.map")screen
-    splash:  (require"client.screen.splash")screen
-    story:   (require"client.screen.story")screen
-    load:    (require"client.screen.load")screen
-}
+screens_path = "client.screen.screens"
+screen_list = {"game", "title", "game_menu", "preferences", "splash", "story", "load"}
+screens = {}
+for screen_name in *screen_list
+    screens[screen_name] = (require"#{screens_path}.#{screen_name}")screen
 
 
 handle_command = (command) ->

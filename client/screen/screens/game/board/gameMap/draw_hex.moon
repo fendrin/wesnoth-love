@@ -2,8 +2,8 @@ love = love
 import get_unit    from require"wesnoth.api.units"
 import get_terrain from require"wesnoth.api.map"
 
-draw_terrain = require"client.screen.game.board.draw_terrain"
-draw_unit    = require"client.screen.game.board.gameMap.draw_unit"
+draw_terrain = require"client.screen.screens.game.board.draw_terrain"
+draw_unit    = require"client.screen.screens.game.board.gameMap.draw_unit"
 
 -- @todo avoid magic numbers
 draw_coordinates = false
