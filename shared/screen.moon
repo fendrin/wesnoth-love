@@ -3,14 +3,6 @@ love = love
 log  = (require"log")"Screen"
 
 
-export gameState = {
-    board: {
-        units: (require"wesnoth.utils.unit_map")(30,30)
-        sides: {}
-    }
-}
-
-
 local active_screen
 local next_screen
 local screens
@@ -24,6 +16,7 @@ local blend_speed
 local parent
 screen = (id, parent_id) ->
     next_screen = id
+    error"unknown screen" unless screens[id]
     parent = parent_id
     unless active_screen
         alpha = -1
@@ -33,25 +26,23 @@ screen = (id, parent_id) ->
         alpha = 0
         blend_speed = 4
 
-screens_path = "client.screen.screens"
-screen_list = {"game", "title", "game_menu", "preferences", "splash", "story", "load"}
-screens = {}
-for screen_name in *screen_list
-    screens[screen_name] = (require"#{screens_path}.#{screen_name}")screen
+client_screens_path    = "client.screens"
+launcher_screens_path  = "launcher.screens"
+-- shared_screens_path    = "shared.screens"
 
+client_screen_list    = {"game", "game_menu", "story", "prestart"}
+launcher_screen_list  = {"title", "splash", "load"}
+-- shared_screen_list    = {"preferences"}
+
+screens = {}
+-- for screen_name in *shared_screen_list
+    -- screens[screen_name] = (require"#{shared_screens_path}.#{screen_name}")screen
+for screen_name in *launcher_screen_list
+    screens[screen_name] = (require"#{launcher_screens_path}.#{screen_name}")screen
+for screen_name in *client_screen_list
+    screens[screen_name] = (require"#{client_screens_path}.#{screen_name}")screen
 
 handle_command = (command) ->
-    gameState = gameState
-    switch command.command_name
-        when "story"
-            screen("story", command)
-            return true
-        when "message"
-            screens.game.handle_command(command)
-            return true
-
-    return false
-
 
 handle_server = ->
     client = love.thread.getChannel( 'client' )
@@ -72,7 +63,6 @@ handle_server = ->
 print_info = true
 with love
     .update = (dt) ->
-
         if alpha >= 0
             alpha += dt*blend_speed
             if alpha > 1
@@ -95,7 +85,6 @@ with love
             x = love.graphics.getWidth! - 80
             love.graphics.print("FPS: #{love.timer.getFPS!} " .. '\n' ..
             "RAM: #{mem_used}MB", x, 4)
-
 
     .mousepressed = (...) ->
         if mousepressed = screens[active_screen].mousepressed

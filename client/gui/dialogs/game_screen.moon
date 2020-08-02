@@ -6,7 +6,7 @@ love = love
 
 game_screen = ->
 
-    dlg = (require"client.gui.dialog")("game_screen")
+    dlg = (require"shared.gui.dialog")("client.gui.layout.game_screen")
     return dlg
 
 return game_screen

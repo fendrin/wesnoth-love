@@ -9,7 +9,7 @@ main_menu = (screen) ->
 
     log.debug"game_menu dialog called"
 
-    menu_dlg = (require"client.gui.dialog")("game_menu")
+    menu_dlg = (require"shared.gui.dialog")("client.gui.layout.game_menu")
 
     with menu_dlg
         .resume\onPress(     (event) -> screen"game")

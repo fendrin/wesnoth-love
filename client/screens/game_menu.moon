@@ -2,10 +2,12 @@ love = love
 local gameMenu
 
 update = (dt) ->
+    -- error"update in game_menu"
 
 draw = ->
 
 open = ->
+    print"geme menu opened"
     love.mouse.setVisible( true )
     gameMenu\show!
 

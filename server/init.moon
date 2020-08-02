@@ -13,13 +13,17 @@ client = love.thread.getChannel( 'client' )
 server = love.thread.getChannel( 'server' )
 
 controller = (require"wesnoth").controller
-wesnoth    = (require"wesnoth").wesnoth
+-- wesnoth    = (require"wesnoth").wesnoth
 
 controller.read_data_tree!
-assert(wesnoth.game_config)
-game_config = wesnoth.game_config
-game_config.command_name = "gameConfig"
-client\push(wesnoth.game_config)
+
+client\push{ command_name: "server_ready" }
+
+-- todo
+-- assert(wesnoth.game_config)
+-- game_config = wesnoth.game_config
+-- game_config.command_name = "gameConfig"
+-- client\push(wesnoth.game_config)
 
 log.debug'start serverLoop'
 running = true
@@ -30,5 +34,3 @@ while running
     if answer
         for command in *answer
             client\push(command)
-
-

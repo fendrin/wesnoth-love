@@ -1,6 +1,9 @@
+----
+-- Copyright (C) 2020 by Fabian Mueller <fendrin@gmx.de>
+-- SPDX-License-Identifier: GPL-2.0+
+
 love = love
 stringx  = require"pl.stringx"
-
 
 load = ( arg ) ->
 
@@ -19,6 +22,9 @@ load = ( arg ) ->
 
 
     require"launcher.preferences"
+    screen = require"shared.screen"
+    screen("splash")
+
     -- @todo
     -- save_dir = "saves"
     -- unless love.filesystem.getInfo(save_dir)
@@ -27,15 +33,5 @@ load = ( arg ) ->
 
     -- @todo
     -- config = (require"launcher.cmd_line")(arg)
-
-    love.threaderror = (thread, errorstr) ->
-        -- thread:getError() will return the same error string now.
-        print("Thread error!\n"..errorstr)
-
-    thread = love.thread.newThread("server/main.lua")
-    thread\start!
-
-    require"client"
-
 
 return load

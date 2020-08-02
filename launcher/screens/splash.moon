@@ -1,5 +1,6 @@
 love = love
-o_ten_one = require"client.lib.splashes.o-ten-one"
+o_ten_one = require"launcher.lib.splashes.o-ten-one"
+-- screen = require"shared.screen"
 
 cfg = {
     -- fill: "rain"
@@ -14,7 +15,7 @@ return (screen) ->
         open: ->
             splash_screen = o_ten_one.new(cfg)
             splash_screen.onDone = ->
-                screen"load"
+                screen"title"
             love.mouse.setVisible( false )
             love.graphics.reset!
         close: ->

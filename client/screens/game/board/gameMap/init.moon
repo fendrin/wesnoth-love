@@ -1,10 +1,10 @@
 love = love
 import get_map_size from require"wesnoth.api.map"
 import get_unit     from require"wesnoth.api.units"
-pixel_to_hex = require"client.screen.screens.game.board.pixel_to_hex"
-draw_hex     = require"client.screen.screens.game.board.gameMap.draw_hex"
-scroll       = require"client.screen.screens.game.board.gameMap.scroll"
-update_unit  = require"client.screen.screens.game.board.gameMap.update_unit"
+pixel_to_hex = require"client.screens.game.board.pixel_to_hex"
+draw_hex     = require"client.screens.game.board.gameMap.draw_hex"
+scroll       = require"client.screens.game.board.gameMap.scroll"
+update_unit  = require"client.screens.game.board.gameMap.update_unit"
 
 -- local gameState
 local border_size
@@ -63,8 +63,11 @@ left_mouse_press = (dlg, x, y) ->
 
 
 right_mouse_press = (x, y) ->
+    return unless (selected_hex.x and selected_hex.y)
     if unit = get_unit(gameState, selected_hex.x, selected_hex.y)
+
         if unit.side == viewing_side
+
             if occupied = get_unit(gameState, hovered_hex.x, hovered_hex.y)
                 print"attack if enemy, soon!"
             else

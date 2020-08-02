@@ -4,9 +4,9 @@ love = love
 
 dlg = (require"client.gui.dialogs.game_screen")!
 
-board = require"client.screen.screens.game.board"
+board = require"client.screens.game.board"
 -- board = require"board"
-moan  = require"client.screen.screens.game.moan"
+moan  = require"client.screens.game.moan"
 -- moan  = require"moan"
 
 
@@ -22,7 +22,7 @@ close = -> dlg\hide!
 
 
 handle_command = (command) ->
-    -- assert(false)
+    assert(false)
     return true if moan.handle_command(command)
     return false
 
@@ -60,7 +60,7 @@ keypressed = (key) ->
         when 'f5'
             love.event.quit('restart')
         when 'escape'
-            screen"menu"
+            screen"game_menu"
         when 'm'
             screen'miniMap'
 

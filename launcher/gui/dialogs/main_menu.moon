@@ -5,31 +5,22 @@
 love = love
 log = (require"log")"mainMenu"
 
+start_campaign = require"client.start_campaign"
 
 main_menu = (screen) ->
 
     log.debug"main_menu dialog called"
-    menu_dlg = (require"client.gui.dialog")("main_menu")
+    menu_dlg = (require"shared.gui.dialog")("launcher.gui.layout.main_menu")
 
     with menu_dlg
         -- .tutorial\onPress((event) ->
         --     menu_dlg\hide!
-        --     server = love.thread.getChannel( 'server' )
-        --     mapRequest = {
-        --         request_name: "mapRequest"
-        --         id: "tutorial"
-        --     }
-        --     server\push(mapRequest)
+        --     start_campaign("Tutorial")
         --     screen("load")
         -- )
         .demo\onPress((event) ->
             menu_dlg\hide!
-            server = love.thread.getChannel( 'server' )
-            mapRequest = {
-                request_name: "startCampaign"
-                id: "An_Orcish_Incursion"
-            }
-            server\push(mapRequest)
+            -- start_campaign("An_Orcish_Incursion")
             screen("load")
         )
         -- .preferences\onPress((event) ->

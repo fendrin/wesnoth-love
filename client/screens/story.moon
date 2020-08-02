@@ -25,6 +25,7 @@ local cfg
 local partNumber
 return (screen) ->
     return {
+
         open: (story) ->
             finished = false
             love.mouse.setVisible(false)

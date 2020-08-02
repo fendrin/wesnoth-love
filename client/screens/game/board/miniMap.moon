@@ -2,10 +2,10 @@ love = love
 import get_map_size, get_terrain from require"wesnoth.api.map"
 tile_h = 72
 tile_w = 54
-draw_terrain = require"client.screen.screens.game.board.draw_terrain"
+draw_terrain = require"client.screens.game.board.draw_terrain"
 line_size = 2
 
-pixel_to_hex = require"client.screen.screens.game.board.pixel_to_hex"
+pixel_to_hex = require"client.screens.game.board.pixel_to_hex"
 
 local miniMap, miniMapScaled
 
