@@ -30,3 +30,6 @@
 	path = lib/Penlight
 	url = https://github.com/stevedonovan/Penlight.git
     branch = master
+[submodule "launcher/lib/splashes"]
+	path = launcher/lib/splashes
+	url = git@github.com:fendrin/splashes.git
