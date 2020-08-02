@@ -1,5 +1,5 @@
 [submodule "lib/moonscript"]
-	path = lib/moonscript
+	path = shared/lib/moonscript
 	url = https://github.com/fendrin/moonscript.git
     branch = master
 [submodule "server/lib/wesnoth"]
@@ -27,7 +27,7 @@
 	url = https://github.com/fendrin/splashes.git
     branch = master
 [submodule "lib/Penlight"]
-	path = lib/Penlight
+	path = shared/lib/Penlight
 	url = https://github.com/stevedonovan/Penlight.git
     branch = master
 [submodule "launcher/lib/splashes"]

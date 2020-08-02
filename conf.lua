@@ -12,9 +12,9 @@ local love = love
 
 local search_path = love.filesystem.getRequirePath()
 local paths = {
-    "lib/Penlight/lua",
-    "lib",
-    "lib/moonscript",
+    "shared/lib/Penlight/lua",
+    "shared/lib",
+    "shared/lib/moonscript",
     "client/lib",
     "server/lib",
     "server/lib/wesnoth",
