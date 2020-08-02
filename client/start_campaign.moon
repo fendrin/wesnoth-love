@@ -2,7 +2,7 @@
 -- Copyright (C) 2020 by Fabian Mueller <fendrin@gmx.de>
 -- SPDX-License-Identifier: GPL-2.0+
 
-send_request = require"send_request"
+send_request = require"client.send_request"
 
 return (id) ->
     request = {
