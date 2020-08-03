@@ -25,9 +25,9 @@ action2key = {
     end_turn: "end"
 }
 
-key2action = {}
+-- key2action = {}
 
-for action, key in ipairs(action2key)
-    key2action[key] = action
+-- for action, key in ipairs(action2key)
+--     key2action[key] = action
 
-return key2action
+return action2key
