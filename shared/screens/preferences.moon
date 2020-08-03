@@ -23,7 +23,7 @@ return (screen) ->
     exit = ->
         screen(parent)
 
-    prefs = (require"client.gui.dialogs.preferences")(exit)
+    prefs = (require"shared.gui.dialogs.preferences")(exit)
 
     return {
         update: ->

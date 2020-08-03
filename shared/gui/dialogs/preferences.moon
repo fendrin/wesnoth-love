@@ -6,15 +6,15 @@ love = love
 
 preferences = (root) ->
 
-    dialog = require"client.gui.dialog"
+    dialog = require"shared.gui.dialog"
+    dialog_path = "shared.gui.layout.preferences"
     dialogs = {
-        general: dialog("preferences.preferences", "preferences.general")
-        hotkeys: dialog("preferences.preferences", "preferences.hotkeys")
-        display: dialog("preferences.preferences", "preferences.display")
-        sound:   dialog("preferences.preferences", "preferences.sound")
-        multiplayer: dialog("preferences.preferences",
-            "preferences.multiplayer")
-        advanced: dialog("preferences.preferences", "preferences.advanced")
+        general:     dialog("#{dialog_path}.preferences", "#{dialog_path}.general")
+        hotkeys:     dialog("#{dialog_path}.preferences", "#{dialog_path}.hotkeys")
+        display:     dialog("#{dialog_path}.preferences", "#{dialog_path}.display")
+        sound:       dialog("#{dialog_path}.preferences", "#{dialog_path}.sound")
+        multiplayer: dialog("#{dialog_path}.preferences", "#{dialog_path}.multiplayer")
+        advanced:    dialog("#{dialog_path}.preferences", "#{dialog_path}.advanced")
     }
 
     for __, dlg in pairs dialogs
