@@ -5,13 +5,11 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 DESTINATION_DIR=${DIR}/builds/
 DESTINATION_FILEPATH=${DESTINATION_DIR}wesnoth.love
-echo $DIR
-echo $DESTINATION_DIR
-echo $DESTINATION_FILEPATH
+echo "Building ${DESTINATION_FILEPATH}"
 
-mkdir $DESTINATION_DIR
-rm $DESTINATION_FILEPATH
+mkdir -p $DESTINATION_DIR
+rm -f $DESTINATION_FILEPATH
 
-cd DIR
+cd $DIR
 cd ../../
-zip -x ".travis.yml" -x "utils/*" -x "wesnoth-love*" -x "*.git*" -9 -r ${DESTINATION_DIR}wesnoth.love ./
+zip -q -x ".travis.yml" -x "utils/*" -x "wesnoth-love*" -x "*.git*" -9 -r $DESTINATION_FILEPATH ./
