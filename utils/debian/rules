@@ -6,9 +6,10 @@ BUILD_DATE=$(shell dpkg-parsechangelog --show-field=Date)
 	dh $@
 
 override_dh_auto_clean:
+	rm -rf distrib;
 	mkdir -p distrib;
-	rm -f distrib/wesnoth.love;
-	dh_auto_clean
+	dh_auto_clean;
 
 override_dh_auto_build:
-	zip -q -9 -r --exclude=*.git* --exclude=*distrib* --exclude=*debian* distrib/wesnoth.love  .
+	cd ..; zip -x ".travis.yml" -x "utils/*" -x "wesnoth-love_*" -x "*.git*" -9 -r ./utils/distrib/wesnoth.love ./
+
