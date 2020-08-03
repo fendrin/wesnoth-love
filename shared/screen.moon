@@ -15,9 +15,9 @@ local alpha
 local blend_speed
 local parent
 screen = (id, parent_id) ->
+    log.debug"screen called, id is #{id}, parent is #{parent_id}"
     next_screen = id
-    print"screen called id is #{id}"
-    error"unknown screen" unless screens[id]
+    error"unknown screen: #{id}" unless screens[id]
     parent = parent_id
     unless active_screen
         alpha = -1
@@ -29,15 +29,15 @@ screen = (id, parent_id) ->
 
 client_screens_path    = "client.screens"
 launcher_screens_path  = "launcher.screens"
--- shared_screens_path    = "shared.screens"
+shared_screens_path    = "shared.screens"
 
 client_screen_list    = {"game", "game_menu", "story", "prestart"}
 launcher_screen_list  = {"title", "splash", "load"}
--- shared_screen_list    = {"preferences"}
+shared_screen_list    = {"preferences"}
 
 screens = {}
--- for screen_name in *shared_screen_list
-    -- screens[screen_name] = (require"#{shared_screens_path}.#{screen_name}")screen
+for screen_name in *shared_screen_list
+    screens[screen_name] = (require"#{shared_screens_path}.#{screen_name}")screen
 for screen_name in *launcher_screen_list
     screens[screen_name] = (require"#{launcher_screens_path}.#{screen_name}")screen
 for screen_name in *client_screen_list
