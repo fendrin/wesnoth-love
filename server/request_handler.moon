@@ -66,6 +66,8 @@ transfer_units = ->
 request_handler = (request) ->
 
     switch request.request_name
+        when "Move"
+            log.info("Move request not implemented yet")
         -- when "startCampaign"
         --     controller.load_campaign(request.id)
         --     -- for side in *wesnoth.sides
