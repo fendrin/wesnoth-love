@@ -16,6 +16,7 @@ local blend_speed
 local parent
 screen = (id, parent_id) ->
     next_screen = id
+    print"screen called id is #{id}"
     error"unknown screen" unless screens[id]
     parent = parent_id
     unless active_screen
