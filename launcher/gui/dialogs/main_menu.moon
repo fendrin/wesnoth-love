@@ -5,29 +5,24 @@
 love = love
 log = (require"log")"mainMenu"
 
-start_campaign = require"client.start_campaign"
-
-main_menu = (screen) ->
+main_menu = (handler) ->
 
     log.debug"main_menu dialog called"
     menu_dlg = (require"shared.gui.dialog")("launcher.gui.layout.main_menu")
 
     with menu_dlg
-        -- .tutorial\onPress((event) ->
-        --     menu_dlg\hide!
-        --     start_campaign("Tutorial")
-        --     screen("load")
-        -- )
         .demo\onPress((event) ->
             menu_dlg\hide!
-            -- start_campaign("An_Orcish_Incursion")
-            screen("load")
+            handler("demo")
         )
-        -- .preferences\onPress((event) ->
-        --     screen("prefs", "title")
-        -- )
-
-        menu_dlg.quit\onPress((event) -> love.event.quit! )
+        .preferences\onPress((event) ->
+            menu_dlg\hide!
+            handler("preferences")
+        )
+        .quit\onPress((event) ->
+            menu_dlg\hide!
+            handler("quit")
+        )
 
     return menu_dlg
 
