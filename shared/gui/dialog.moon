@@ -9,14 +9,12 @@ Preferences = Preferences
 dialog = (layout, sublayout) ->
 
     local dlg
-    -- if sublayout
-    --     dlg = Layout(
-    --         -- (require"client.gui.layout.#{layout}")(
-    --         (require(layout)(
-    --             require"client.gui.layout.#{sublayout}"))
-    -- else
-    -- dlg = Layout(require"client.gui.layout.#{layout}")
-    dlg = Layout(require(layout))
+    if sublayout
+        layout_cfg = require(layout)
+        sublayout_cfg = require(sublayout)
+        dlg = Layout(layout_cfg(sublayout_cfg))
+    else
+        dlg = Layout(require(layout))
 
     dlg\setStyle(require"shared.gui.style.#{Preferences.style}")
     dlg\setTheme(require"shared.gui.theme.#{Preferences.theme}")
