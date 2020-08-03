@@ -25,7 +25,7 @@
             -- { style: 'menuButton', id: 'add_ons', text: 'Add-ons' }
             -- { style: 'menuButton', id: 'mapEditor', text: 'Map Editor' }
             -- { style: 'menuButton', id: 'language', text: 'Language' }
-            -- { style: 'menuButton', id: 'preferences', text: 'Preferences' }
+            { style: 'menuButton', id: 'preferences', text: 'Preferences' }
             -- { style: 'menuButton', id: 'credits', text: 'Credits' }
             { style: 'menuButton', id: 'quit', text: 'Exit' }
         }
