@@ -8,21 +8,19 @@ get_image = require"client.image.image_path"
 local main_menu
 local width
 
+gameConfig = {
+    title_music: "return_to_wesnoth.ogg"
+    lobby_music: "silence.ogg"
+    images: {
+        game_title: "maps/titlescreen.png"
+        game_title_background: "maps/background.jpg"
+        game_logo: "misc/logo.png"
+        game_logo_background: "misc/logo-bg.png"
+    }
+}
 
 local background, foreground, logo, logo_bg
 load_images = ->
-
-    gameConfig = {
-        title_music: "return_to_wesnoth.ogg"
-        lobby_music: "silence.ogg"
-        images: {
-            game_title: "maps/titlescreen.png"
-            game_title_background: "maps/background.jpg"
-            game_logo: "misc/logo.png"
-            game_logo_background: "misc/logo-bg.png"
-        }
-    }
-
     with gameConfig.images
         foreground = get_image(.game_title)
         background = get_image(.game_title_background)
@@ -43,21 +41,14 @@ load_images = ->
 
 
 audio = ->
-    -- require 'client.lib.slam.slam'
-
-    -- title_music = gameState.gameConfig.title_music
-    -- love_music_path = "assets/data/core/music/" .. title_music
-
-    -- -- love_music_path = get.assets"data/core/music/love_theme.ogg"
-    -- -- creates a new SLAM source
-    -- music = love.audio.newSource(love_music_path, 'stream')
-    -- -- all instances will be looping
-    -- music\setLooping(false)
-    -- -- set volume for all instances
-    -- music\setVolume(.3)
-    -- -- play music
-    -- love.audio.play(music)
-    -- -- woosh = love.audio.newSource({'woosh1.ogg', 'woosh2.ogg'}, 'static')
+    title_music = gameConfig.title_music
+    love_music_path = "assets/data/core/music/" .. title_music
+    music = love.audio.newSource(love_music_path, 'stream')
+    music\setLooping(false)
+    -- set volume for all instances
+    music\setVolume(.3)
+    -- play music
+    love.audio.play(music)
 
 
 draw = ->
