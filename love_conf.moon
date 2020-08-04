@@ -8,12 +8,12 @@ version =
     minor: 0
     patch: 0
 
-local irdya_version
+local v4l_version
 with version
-    irdya_version = "#{.major}.#{.minor}.#{.patch}"
+    v4l_version = "#{.major}.#{.minor}.#{.patch}"
 
-game_title = "Wesnoth"
-game_id    = "wesnoth"
+game_title = "Wesnoth for Löve"
+game_id    = "wesnoth4love"
 
 love_version =
     major: 11
@@ -29,8 +29,8 @@ return ( config ) ->
         .version  = love_version
         .console  = true
         with .window
-            -- .title      = "#{game_title} | Irdya (v#{irdya_version})"
-            -- .icon       = "assets/icons/#{game_id}-icon.png"
+            .title      = "#{game_title} (v#{v4l_version})"
+            .icon       = "assets/images/icons/icon-game.png" -- todo take from a config file
             -- .msaa       = 4
             -- .width      = 1920
             -- .minwidth   = 800
