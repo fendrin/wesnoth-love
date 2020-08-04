@@ -9,17 +9,18 @@
 -- At last we register our config function here which is later called for
 -- seting up the engine's parameters.
 local love = love
+local fs = love.filesystem
 
-local search_path = love.filesystem.getRequirePath()
+local search_path = fs.getRequirePath()
 local paths = {
-    "shared/lib/Penlight/lua",
+    "shared",
     "shared/lib",
     "shared/lib/moonscript",
+    "shared/lib/Penlight/lua",
     "client/lib",
     "server/lib",
     "server/lib/wesnoth",
-    "server/lib/wesnoth/utils",
-    "shared"
+    "server/lib/wesnoth/utils"
 }
 
 for i, path in ipairs(paths) do
@@ -36,7 +37,7 @@ end
 -- First set the lua searchpath of love to our needs, then require moonscript,
 -- which registers its own loader (for files with the .moon extension)
 -- with the luapathes rewriten for moonscript.
-love.filesystem.setRequirePath(search_path)
+fs.setRequirePath(search_path)
 require"moonscript"
 
 -- Register the love.conf function after requireing moonscript,
