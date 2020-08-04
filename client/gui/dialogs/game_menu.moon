@@ -5,18 +5,18 @@
 love = love
 log = (require"log")"gameMenu"
 
-main_menu = (screen) ->
+game_menu = (handler) ->
 
     log.debug"game_menu dialog called"
 
     menu_dlg = (require"shared.gui.dialog")("client.gui.layout.game_menu")
 
     with menu_dlg
-        .resume\onPress(     (event) -> screen"game")
-        .preferences\onPress((event) -> screen("preferences", "game_menu"))
-        -- .quit\onPress(       (event) -> screen"title")
-        .exit\onPress(       (event) -> love.event.quit!)
+        .resume\onPress(     (event) -> handler"resume")
+        .preferences\onPress((event) -> handler"preferences")
+        .quit\onPress(       (event) -> handler"quit")
+        .exit\onPress(       (event) -> handler"exit")
 
     return menu_dlg
 
-return main_menu
+return game_menu
