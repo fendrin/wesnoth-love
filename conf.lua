@@ -42,4 +42,4 @@ require"moonscript"
 
 -- Register the love.conf function after requireing moonscript,
 -- since the function's file could already miss a lua counterpart.
-love.conf = require"love_conf"
+love.conf = require"launcher.love_conf"
