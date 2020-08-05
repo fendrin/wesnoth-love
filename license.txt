@@ -4,43 +4,49 @@ Licensing information
 This distribution contains code from the following projects (full license text below):
 
  - Wesnoth
-    Website: http://wesnoth.org/
-    License: GPL2+
-    Copyright (c) 2003-2018 Wesnoth Developers
+    Website:   https://wesnoth.org/
+    License:   GPL2+
+    Copyright: © 2003-2018 Wesnoth Developers
 
  - wesnoth-love
-    License: GPL2+
-    Copyright (c) 2018 Fabian Mueller
+    Website:   https://github.com/fendrin/wesnoth-love
+    License:   GPL2+
+    Copyright: © 2018-2020 Fabian Mueller
 
  - Luigi
-    Website: https://github.com/airstruck/luigi
-    License: MIT
-    Copyright (c) 2015 airstruck
+    Website:   https://github.com/airstruck/luigi
+    License:   MIT
+    Copyright: © 2015 airstruck
 
  - Moonscript
-    Website: https://moonscript.org/
-    License: MIT
-    Copyright (C) 2017 by Leaf Corcoran
+    Website:   https://moonscript.org/
+    License:   MIT
+    Copyright: © 2017 by Leaf Corcoran
 
  - Moan
-    Website: https://github.com/ttxi/Moan.lua
-    License: MIT
-    Copyright (c) 2017 May W.
+    Website:   https://github.com/ttxi/Moan.lua
+    License:   MIT
+    Copyright: © 2017 May W.
 
  - lpeg
-    Website: http://www.inf.puc-rio.br/~roberto/lpeg/
-    License: MIT
-    Copyright © 2007-2017 Lua.org, PUC-Rio.
+    Website:   http://www.inf.puc-rio.br/~roberto/lpeg/
+    License:   MIT
+    Copyright: © 2007-2017 Lua.org, PUC-Rio.
 
  - splashes
-    Website: https://github.com/love2d-community/splashes
-    License: zlib
-    Copyright (c) 2016 love-community members
+    Website:   https://github.com/love2d-community/splashes
+    License:   zlib
+    Copyright: © 2016 love-community members
 
  - Penlight
-    Website: https://github.com/stevedonovan/Penlight
-    License: MIT
-    Copyright (C) 2009-2016 Steve Donovan, David Manura.
+    Website:   https://github.com/stevedonovan/Penlight
+    License:   MIT
+    Copyright: © 2009-2016 Steve Donovan, David Manura.
+
+ - argparse
+    Website:   https://github.com/mpeterv/argparse
+    License:   MIT
+    Copyright: © 2013 - 2018 Peter Melnichenko
 
 
 MIT/Expat
