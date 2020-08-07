@@ -50,3 +50,7 @@ although the Lua ones might be translated into Moonscript at a later time.
 * Use _ldoc_-style comments to document non-trivial sections.
 * It can't hurt to implement _busted_ unit tests.
 * Prefer readability over optimizations.
+* Naming Conventions
+  * class: PascalCase
+  * local variables/functions: snake_case
+  * constants: ALL_CAPS
