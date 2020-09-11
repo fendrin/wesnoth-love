@@ -2,7 +2,8 @@
 -- Copyright (C) 2020 by Fabian Mueller <fendrin@gmx.de>
 -- SPDX-License-Identifier: GPL-2.0+
 
-log        = (require"log")"server"
+loging = loging
+log        = loging"server"
 controller = (require"wesnoth").controller
 wesnoth    = (require"wesnoth").wesnoth
 
@@ -66,31 +67,46 @@ transfer_units = ->
 request_handler = (request) ->
 
     switch request.request_name
+
+        when "connect"
+            log.info'connect request handler'
+            config = {
+                command_name: 'data'
+                Campaign:    DATA.Campaign
+                Tip:         DATA.Tip
+                Game_Config: DATA.Game_Config
+                Binary_Path: DATA.Binary_Path
+                Color_Palette: DATA.Color_Palette
+                Color_Range:   DATA.Color_Range
+            }
+            return {config}
+
         when "Move"
-            log.info("Move request not implemented yet")
-        -- when "startCampaign"
-        --     controller.load_campaign(request.id)
-        --     -- for side in *wesnoth.sides
-        --     --     side.command_name = 'Side'
-        --     --     client\push(side)
-        --     board = controller.gameBoard!
-        --     log.debug"push map to the client channel"
-        --     board.map.command_name = "map"
-        --     setupReady = { command_name: "setupReady"}
-        --     return {board.map, transfer_units!, setupReady}
-        when "clientReady"
-            -- controller.load_campaign(request.id)
-            controller.load_campaign("An_Orcish_Incursion")
+            log.info"Move request not implemented yet"
+
+        when "startCampaign"
+            log.info"startCampaign request"
+
+            -- (require'moon').p request
+
+            controller.load_campaign(request.id)
+            config = {
+                command_name: 'data'
+                Game_Config: DATA.Game_Config
+                Binary_Path: DATA.Binary_Path
+                Color_Palette: DATA.Color_Palette
+                Color_Range:   DATA.Color_Range
+            }
+
             -- for side in *wesnoth.sides
-            --     side.command_name = 'Side'
-            --     client\push(side)
+                -- side.command_name = 'Side'
+                -- client\push(side)
             board = controller.gameBoard!
             log.debug"push map to the client channel"
             board.map.command_name = "map"
             setupReady = { command_name: "setupReady"}
-            return {board.map, transfer_units!, setupReady}
-            -- error'here'
-            -- controller.start_scenario!
+            return {config, board.map, transfer_units!, setupReady}
+
         when "startScenario"
             -- error"start_scenario"
             controller.start_scenario!
