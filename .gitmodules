@@ -1,35 +1,38 @@
-[submodule "lib/moonscript"]
-	path = shared/lib/moonscript
-	url = https://github.com/fendrin/moonscript.git
-    branch = master
-[submodule "server/lib/wesnoth"]
-	path = server/lib/wesnoth
+[submodule "wesnoth"]
+	path = wesnoth/server/lib/wesnoth
 	url = https://github.com/fendrin/wesnoth-api.git
 	branch = master
-[submodule "client/lib/luigi"]
-	path = client/lib/luigi
-	url = https://github.com/fendrin/luigi.git
-    branch = master
-[submodule "assets"]
-	path = assets
-	url = https://github.com/fendrin/wesnoth-assets.git
-	branch = master
+    update = merge
 [submodule "data"]
 	path = data
 	url = https://github.com/fendrin/wesnoth-data.git
 	branch = master
-[submodule "client/lib/Moan"]
-	path = client/lib/Moan
-	url = https://github.com/fendrin/Moan.lua.git
+    update = merge
+[submodule "assets"]
+	path = assets
+	url = https://github.com/fendrin/wesnoth-assets.git
+	branch = master
+    update = merge
+
+[submodule "moonscript"]
+	path = wesnoth/shared/lib/moonscript
+	url = https://github.com/fendrin/moonscript.git
     branch = master
-[submodule "client/lib/splashes"]
-	path = client/lib/splashes
-	url = https://github.com/fendrin/splashes.git
-    branch = master
-[submodule "lib/Penlight"]
-	path = shared/lib/Penlight
+    update = merge
+[submodule "penlight"]
+	path = wesnoth/shared/lib/Penlight
 	url = https://github.com/stevedonovan/Penlight.git
     branch = master
-[submodule "launcher/lib/splashes"]
-	path = launcher/lib/splashes
+    update = merge
+
+[submodule "luigi"]
+	path = wesnoth/client/shared/lib/luigi
+	url = https://github.com/fendrin/luigi.git
+    branch = master
+    update = merge
+[submodule "splashes"]
+	path = wesnoth/client/shared/lib/splashes
 	url = git@github.com:fendrin/splashes.git
+    branch = master
+    update = merge
+
