@@ -143,6 +143,8 @@ Wesnoth Script Language - Modified Moonscript with Macro support
 A file containing an add-on for Wesnoth for Löve
 * .love
 A file containing a Löve Game (like W4L)
+* .md
+Markdown File - used for documentation
 
 ### Löve boot sequence
 * Löve loads in boot.lua:
