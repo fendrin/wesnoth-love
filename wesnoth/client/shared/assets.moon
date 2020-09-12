@@ -7,7 +7,7 @@
 
 {
     images:
-        logo:       "assets/images/icons/wesnoth-logo-1920.png"
+        logo:       "assets/images/wesnoth-logo-1920.png"
         background: "assets/data/core/images/maps/background.jpg"
 
     cursors:
