@@ -59,7 +59,7 @@ class Connect extends Screen
 
     update: (dt) =>
         super!
-        @splash\update(dt/3)
+        @splash\update(dt/2.75)
 
         if @splash_done and @config_recieved
             @splash_done = false
