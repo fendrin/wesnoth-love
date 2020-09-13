@@ -10,15 +10,15 @@ log = loging"client"
 
 engine = require'engine'
 send_request = require'send_request'
-o_ten_one = require"splashes.o-ten-one"
+o_ten_one = require'splashes.o-ten-one'
 Screen = require'screen.Screen'
 
 cfg = {
     -- fill: 'lighten'
     -- fill: 'rain'
     background:   {0,0,0}
-    delay_after:  8
-    delay_before: 0.5
+    -- delay_after:  8
+    -- delay_before: 0.5
 }
 
 
@@ -59,7 +59,7 @@ class Connect extends Screen
 
     update: (dt) =>
         super!
-        @splash\update(dt)
+        @splash\update(dt/3)
 
         if @splash_done and @config_recieved
             @splash_done = false
