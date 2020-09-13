@@ -19,7 +19,18 @@
 	url = https://github.com/stevedonovan/Penlight.git
     branch = master
     update = merge
-[submodule "wesnoth/client/shared/lib/luigi"]
+[submodule "luigi"]
 	path = wesnoth/client/shared/lib/luigi
 	url = git@github.com:fendrin/luigi.git
 	branch = gh-pages
+    update = merge
+[submodule "splashes"]
+	path = wesnoth/client/shared/lib/splashes
+	url = git@github.com:fendrin/splashes.git
+	branch = master
+    update = merge
+[submodule "wesnoth-api"]
+	path = wesnoth/server/lib/wesnoth
+	url = git@github.com:fendrin/wesnoth-api.git
+	branch = master
+    update = merge
