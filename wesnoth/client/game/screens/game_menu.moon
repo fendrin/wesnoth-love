@@ -16,7 +16,7 @@ class MenuScreen extends Screen
     new: (director) =>
         @id = 'menuScreen'
         @background = "maps/background.jpg"
-        @foreground = "icons/wesnoth-logo-1920.png"
+        @foreground = "wesnoth-logo-1920.png"
         @gameMenu   = (require"gui.dialogs.game_menu")((action) -> handler(@, action))
         super(director)
 
