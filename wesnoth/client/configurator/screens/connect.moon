@@ -46,7 +46,7 @@ class Connect extends Screen
         @splash.onDone = ->
             @splash_done = true
             love.graphics.reset!
-        engine.play"assets/love_short.ogg"
+        engine.play"assets/sounds/love_short.ogg"
 
         love.mouse.setVisible(false)
 
