@@ -84,7 +84,7 @@ class Launcher extends Screen
         switch @next_action
             when 'feedback'
                 -- todo take from config
-                engine.openURL("https://www.wesnoth.org")
+                engine.openURL'https://forums.wesnoth.org/viewtopic.php?f=13&t=53148'
             when "local"
                 cfg = { mode: 'configurator', server: 'local' }
                 engine.writeConfig(cfg)
