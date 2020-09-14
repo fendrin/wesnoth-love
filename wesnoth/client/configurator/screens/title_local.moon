@@ -110,4 +110,6 @@ class TitleLocal extends Screen
     keypressed: (key) =>
         if key == 'escape'
             engine.restart!
+        if key == 'space'
+            @moan\advanceMsg!
 
