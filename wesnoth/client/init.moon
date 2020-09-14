@@ -18,7 +18,9 @@ fs = require'client.shared.engine.filesystem'
 -- todo
 -- engine.deleteLogs!
 
+major, minor, revision, codename = love.getVersion!
 log.info'\n\nStarting ...\n'
+log.info"Running on Löve '#{codename}' (#{major}.#{minor}.#{revision})"
 
 config = fs.loadConfig!
 -- no config file found in savedir, start launcher
