@@ -19,10 +19,7 @@ handle_command = (command, director) ->
             return true
 
         when "message"
-            -- assert(false)
-            (require'moon').p command
             director.screens.game.moan\speak(command)
-        --     moan.handle_command(command)
             return true
 
         when "map"
