@@ -22,6 +22,14 @@ Discord Server
 Please feel free to join the public [Discord](https://discord.gg/x3Bmy7v) server to discuss Wesnoth for Löve.
 
 
+Development Thread
+------------------
+
+Have a look at the Development [Thread](
+https://forums.wesnoth.org/viewtopic.php?f=13&t=53148
+) found on Wesnoth's Forums.
+
+
 Installation
 ============
 
