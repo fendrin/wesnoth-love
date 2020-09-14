@@ -41,7 +41,7 @@ class TitleLocal extends Screen
             config  = {
                 title:   tip.source
                 message: tip.text
-                image:   get_image'portraits/elves/scout.png'
+                image:   tip.image and get_image(tip.image)
             }
             @moan\speak(config)
 
