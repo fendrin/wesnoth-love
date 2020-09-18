@@ -15,19 +15,21 @@ action2key = {
     EAST: 'kp6'
     WEST: 'kp4'
 
-    scroll_up:   "w"
-    scroll_down: "s"
-    scroll_east: "a"
-    scroll_west: "d"
+    scroll_up:   'w'
+    scroll_down: 's'
+    scroll_east: 'a'
+    scroll_west: 'd'
 
-    quit_game:   "escape"
+    quit_game:   'escape'
 
     end_turn: "end"
 }
 
--- key2action = {}
 
--- for action, key in ipairs(action2key)
---     key2action[key] = action
+key2action = {}
+for action, key in pairs(action2key)
+    key2action[key] = action
+
 
 return action2key
+
