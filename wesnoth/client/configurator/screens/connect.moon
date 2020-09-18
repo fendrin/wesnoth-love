@@ -89,5 +89,5 @@ class Connect extends Screen
         if key == "escape"
             engine.restart!
         else
-            skip_splash!
+            skip_splash(@)
 
