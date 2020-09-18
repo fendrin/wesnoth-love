@@ -4,7 +4,7 @@
 
 connect     = require'screens.connect'
 titleLocal  = require'screens.title_local'
-preferences = require'screens.configurator_preferences'
+preferences = require'screens.ingame_preferences'
 
 
 {

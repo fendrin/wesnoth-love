@@ -7,13 +7,13 @@ prestart = require'screens.prestart'
 story    = require'screens.story'
 game     = require'screens.game'
 menu     = require'screens.game_menu'
-preferences = require'screens.preferences'
+preferences = require'screens.ingame_preferences'
 
 {
     :prestart
     :story
     :game
     :menu
-    :preferences
+    preferences: (director) -> preferences(director, 'game')
 }
 
