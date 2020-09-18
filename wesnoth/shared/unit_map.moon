@@ -141,6 +141,10 @@ class UnitMap -- extends HasGetters
     -- @number y
     -- @treturn Unit
     get_unit_at: (x, y) =>
+        -- todo think about making nil inputs an error
+        return nil unless x
+        return nil unless y
+
         -- error "UnitMap.get_unit_at: Y-coordinate is offmap: #{y} - #{@height}" if y < 1 or y > @height
         return nil if y < 1 or y > @height
         -- error "UnitMap.get_unit_at: Y-coordinate is offmap: #{x} - #{@width}"  if x < 1 or x > @width
