@@ -101,7 +101,10 @@
         type: 'panel'
     dialogButton:
         type: 'button'
-        width: 100
+        width: 140
+        height: 45
+        color: { 0.734375 * 256, 0.6875 * 256, 0.53125 * 256}
+        size: 18
 ----------------------------------------------------------------------------
     titleScreen:
         type: "window"
@@ -111,7 +114,7 @@
         width: 160
         height: 50
         size: 20
-        -- color: { 120, 0, 128 }
+        color: { 0.734375, 0.6875, 0.53125 }
     transparent_panel:
         align: 'center middle'
         -- align: "right"
