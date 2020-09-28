@@ -4,12 +4,22 @@
 
 import load_imageData from require'binary'
 
+
+imageData_cache = {}
+get_unit_imageData = (unit) ->
+    path = "#{unit.image}~TC(#{unit.side},magenta)"
+    if data = imageData_cache[path]
+        return data
+    else
+        imageData_cache[path] = load_imageData(path)
+        return imageData_cache[path]
+
 update_unit = (dlg, id, unit) ->
 
     return unless dlg["#{id}Unit"]
 
     -- unit_image =  unit and load_imageData"assets/data/core/images/#{unit.image}~TC(#{unit.side},magenta)" or nil
-    unit_image =  unit and load_imageData"#{unit.image}~TC(#{unit.side},magenta)" or nil
+    unit_image =  unit and get_unit_imageData(unit) or nil
     dlg["#{id}UnitImage"].icon = unit_image
     unit_type = unit and unit.type or ""
     dlg["#{id}UnitImage"].status = unit_type
