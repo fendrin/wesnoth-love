@@ -178,7 +178,9 @@ return function (config)
             type = { 'Control' },
             padding = 6,
             slices = getButtonSlices,
-            focusable = true,
+            -- todo solve the problems around focus
+            -- focusable = true,
+            focusable = false,
         },
         check = {
             type = { 'Line', 'Control' },
