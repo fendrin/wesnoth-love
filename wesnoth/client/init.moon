@@ -20,11 +20,13 @@ fs = require'client.shared.engine.filesystem'
 
 -- todo take the version from a config
 compatible = love.isVersionCompatible( "11.3.0" )
+osString   = love.system.getOS!
 
 major, minor, revision, codename = love.getVersion!
-log.info'\n\nStarting ...\n'
-log.info"Running on Löve '#{codename}' (#{major}.#{minor}.#{revision})"
+log.info'\n\nStarting W4L ...\n'
+log.info"Running Löve '#{codename}' (#{major}.#{minor}.#{revision}) on #{osString}"
 log.error"This version of Löve is not compatible" unless compatible
+log.info"Lua version: #{_VERSION}"
 
 config = fs.loadConfig!
 -- no config file found in savedir, start launcher
