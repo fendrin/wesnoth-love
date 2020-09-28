@@ -2,8 +2,9 @@
 -- Copyright (C) 2020 by Fabian Mueller <fendrin@gmx.de>
 -- SPDX-License-Identifier: GPL-2.0+
 
-
 greet_txt = 'Welcome to Wesnoth for Löve'
+alpha = 140
+background = {0, 0, 0, alpha}
 
 (id, buttons) -> {
     type: "window"
@@ -13,7 +14,7 @@ greet_txt = 'Welcome to Wesnoth for Löve'
     {
         flow: 'y'
         {
-            background: {0, 0, 0, 120}
+            :background
             type: 'status'
             text: greet_txt
             height: 30
@@ -27,14 +28,18 @@ greet_txt = 'Welcome to Wesnoth for Löve'
                 :id
                 status: ""
                 slices: "assets/themes/wesnoth-highres/submenu.png"
-                background: {0.9, 0.9, 0.9, 160}
                 width:  "auto"
                 height: "auto"
-                padding: 18
-                margin:  -3
-                for button in *buttons
-                    { style: 'menuButton', id: button.id, text: button.text, status: button.status }
-            }
+                padding: 8
+                {
+                    status: ''
+                    padding: 8
+                    :background
+                    for button in *buttons
+                        { style: 'menuButton', id: button.id,
+                            text: button.text, status: button.status }
+                        }
+                }
             {}
             {}
         }
