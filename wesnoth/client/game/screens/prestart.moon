@@ -18,6 +18,8 @@ class Prestart extends Screen
 
     open: =>
 
+        engine.setCursorVisible(false)
+
         export gameState = {
             board:
                 units: UnitMap(30, 30)
