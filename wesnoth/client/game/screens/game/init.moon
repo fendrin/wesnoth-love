@@ -14,11 +14,12 @@ command_handler = require'command_handler'
 class GameScreen extends Screen
 
     dlg_handler = (action) =>
-        switch action
-            when "menu"
-                @show_menu = true
-            when "endTurn"
-                @end_turn  = true
+        unless @moan\showing!
+            switch action
+                when "menu"
+                    @show_menu = true
+                when "endTurn"
+                    @end_turn  = true
 
 
     new: (director) =>
@@ -32,10 +33,9 @@ class GameScreen extends Screen
 
     open: =>
         @board.setup(@dlg)
-        -- @moan.setup(@dlg)
 
         engine.setCursorVisible( true )
-        @board.resize(engine.getDimensions!)
+        @resize(engine.getDimensions!)
         @dlg\show!
 
 
@@ -57,9 +57,11 @@ class GameScreen extends Screen
             @end_turn = false
             result = false
             handler = (confirmed) -> result = confirmed
-            dlg = (require"gui.dialogs.yes_no")("End Turn", "Do you want to end your turn?", handler)
+            dlg = (require"gui.dialogs.yes_no")("End Turn",
+                "Do you want to end your turn?", handler)
             dlg\show!
 
+            --todo implement
             if result
                 print 'end_turn'
 
@@ -85,7 +87,11 @@ class GameScreen extends Screen
                 when 1
                     @moan\advanceMsg!
                 when 2
-                    @moan\close!
+                    @moan\clear!
+                when 5
+                    @moan\next!
+                when 4
+                    @moan\previous!
             return true
         else
             return @board.mousepressed(@dlg, x, y, button, istouch)
@@ -93,21 +99,31 @@ class GameScreen extends Screen
 
     mousereleased: ( x, y, button, istouch ) =>
         if button == 3
+            -- todo get rid of love
             love.mouse.setRelativeMode(false)
             -- @todo
             -- love.mouse.setPosition(mouse_restore_x, mouse_restore_y)
 
 
     keypressed: (key) =>
-
-        -- if @moan.keypressed(key)
-            -- return
-
-        switch key
-            when 'escape'
-                @director\activate'menu'
-            when 'm'
-                @director\activate'miniMap'
+        print key
+        if @moan\showing!
+            switch key
+                when 'left'
+                    @moan\previous!
+                when 'right'
+                    @moan\next!
+                when 'return'
+                    print 'return'
+                    @moan\clear!
+                when 'space'
+                    @moan\advanceMsg!
+        else
+            switch key
+                when 'escape'
+                    @director\activate'menu'
+                when 'm'
+                    @director\activate'miniMap'
 
 
     ----
@@ -124,12 +140,11 @@ class GameScreen extends Screen
 
 
     resize: (w, h) =>
-        -- @moan.resize(w, h)
+        @moan\resize(@dlg.gameMap\getWidth! + 4, @dlg.gameMap\getHeight!)
         @board.resize(w, h)
 
 
     mousemoved: (...) =>
         unless @moan\showing!
             @board.mousemoved(@dlg, ...)
-        -- @board.mousemoved(@dlg, ...)
 
