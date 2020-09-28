@@ -3,10 +3,8 @@
 -- SPDX-License-Identifier: GPL-2.0+
 
 
-
+-- todo
 -- <b>: Bold
--- <big>: Makes font relatively larger, equivalent to <span size="larger">
--- <i>: Italic
 -- <s>: Strikethrough
 -- <sub>: Subscript
 -- <sup>: Superscript
@@ -14,119 +12,153 @@
 -- <tt>: Monospace
 -- <u>: Underline
 
-loging = loging
-log = loging"pango"
+-- done
+-- <i>: Italic
+-- <big>: Makes font relatively larger, equivalent to <span size="larger">
 
-s="<span color='#BCB088' size='large' font-style='italic'>You are victorious!</span> Mylord,\nWhat schall we do know ? Schwenken!"
-
+-- todo add loging or remove
+-- loging = loging
+-- log    = loging"pango"
+-- todo get rid of love
 love = love
-
-font_path = "assets/fonts/OldaniaADFStd-Regular.otf"
-
-font = love.graphics.newFont( font_path, 16) -- , hinting, dpiscale )
-
-import lines from require"pl.stringx"
-import print from love.graphics
-
-words  = (txt) -> txt\gmatch'([ ]*[^ ]*)'
-twords = (txt) -> txt\gmatch'%S+'
-
-fragment_tag_s  = (txt) -> txt\gmatch'([^<]*)<(.-)>'
-fragment        = (txt) ->  txt\match'[^>]+$'
-
-arg_value = (txt) -> txt\gmatch'([^ =]*)=([^ ]*)'
-
--- y = 0
-first = true
-print_items = (items) ->
-    for item in *items
-        with item
-            if item.str
-                print(.str, .x, .y)
-            else
-                switch item.name
-                    when 'span'
-                        if item.size
-                            print(item.size, 0,0)
-                        if first
-                            first = false
-                            for key, value in pairs item
-                                log.warn"#{key}: #{value}"
+import print   from love.graphics
+import lines   from require"pl.stringx"
+import hex2rgb from require'image.utils'
 
 
-print_line = (txt, y, width, item_list) ->
+-- todo take from config
+font_size_tbl =
+    smaller: 14
+    normal:  16
+    larger:  18
 
-    x = 0
-    -- line_width = 0
-    line_height = 0
-    for textfragment, foundtag in fragment_tag_s(txt)
-        for word in words(textfragment)
-            table.insert(item_list, { str: word, x: x, y: y })
-            x += font\getWidth(word)
+
+-- todo move to client/shared/binary
+get_font_path = (font_name, font_type) ->
+    return "assets/fonts/#{font_name}-#{font_type}.ttf"
+
+
+-- todo move to client/shared/binary
+font_cache = {}
+get_font = (font_name, font_type, font_size) ->
+    font_path = get_font_path(font_name, font_type)
+    if type(font_size) == 'string'
+        font_size = font_size_tbl[font_size]
+    if path_cache = font_cache[font_path]
+        if font = path_cache[font_size]
+            return font
+        else
+            path_cache[font_size] = love.graphics.newFont(font_path, font_size)
+            return path_cache[font_size]
+    else
+        font_cache[font_path] = {}
+        return get_font(font_name, font_type, font_size)
+
+
+class PangoPrinter
+
+    trim            = (txt) ->  txt\match'^%s*(.*%S)'
+    words           = (txt) -> txt\gmatch'([ ]*[^ ]*)'
+    twords          = (txt) -> txt\gmatch'%S+'
+    -- todo would be nice to combine the next two into one
+    fragment_tag_s  = (txt) -> txt\gmatch'([^<]*)<(.-)>'
+    fragment        = (txt) ->  txt\match'[^>]+$'
+    arg_value       = (txt) ->  txt\match"([^ =]*)='([^ ]*)'"
+
+
+    font_name  = 'Lato'
+    font_type  = 'Regular'
+    font_size  = 'normal'
+    font_color = {0.7, 0.7, 0.7}
+    parse_line = (txt, y, width, item_list) ->
+        x = 0
+
+        parse_testfragment = (textfragment, line_height) ->
+            for word in words(textfragment)
+                font = get_font(font_name, font_type, font_size)
+                word_length = font\getWidth(word)
+                line_height = math.max(line_height, font\getHeight!)
+                if x + word_length > width
+                    y += line_height
+                    x = 0
+                    word = trim(word)
+                word = {{font_color[1], font_color[2], font_color[3], font_color[4] }, word}
+                table.insert(item_list, { :word, :font, :x, :y })
+                x += word_length
+            return line_height
+
+        line_height = 0
+        for textfragment, foundtag in fragment_tag_s(txt)
+
+            assert(textfragment)
+            line_height = parse_testfragment(textfragment, line_height)
+
+            tag_read = false
+            for tagArg in twords(foundtag)
+                unless tag_read
+                    tag_read = true
+                    switch tagArg
+                        when 'span'
+                            continue
+                        when 'big'
+                            font_size = 'larger'
+                        when '/big'
+                            font_size = 'normal'
+                        when 'i'
+                            font_type = 'Italic'
+                        when '/i'
+                            font_type = 'Regular'
+                        when '/span'
+                            font_size = 'normal'
+                            font_type = 'Regular'
+                            font_name = 'Lato'
+                            font_color = {1, 1, 1, 1}
+                else
+                    arg, value = arg_value(tagArg)
+                    switch arg
+                        when 'size'
+                            font_size = value
+                        when 'color'
+                            r, g, b = hex2rgb(string.sub(value, 2, 7))
+                            font_color = {r / 256, g / 256, b / 256}
+
+        if txt_fragment = fragment(txt)
+            line_height = parse_testfragment(txt_fragment, line_height)
+        else
+            font = get_font(font_name, font_type, font_size)
             line_height = math.max(line_height, font\getHeight!)
-        tag = {}
-        for tagArg in twords(foundtag)
 
-            tag["#{tagArg}_da"] = true
-            -- if tagArg == ""
-                -- continue
-            unless tag.name
-                tag.name = tagArg
-            arg, value = arg_value(tagArg)
-            -- if first
-                -- print(tagArg, 0,0)
-                -- first = false
-            tag[arg] = value
-        table.insert(item_list, tag)
-
-    for word in words(fragment(txt))
-        table.insert(item_list, {
-            str: word, x: x, y: y
-        })
-        -- print(word, x, y)
-        x += font\getWidth(word)
-
-    y += line_height
-    return y
+        y += line_height
+        return y
 
 
-(txt, width = 800) ->
-    -- x = 0
-    y = 0
-    item_list = {}
-    for line in lines(s)
-        y = print_line(line, y, width, item_list)
+    new: (txt, width) =>
+        @width = width
+        assert(txt)
+        assert(width)
 
-    return {
-        -- @returns the height of the printing
-        getHeight: -> return y
+        @alpha = 0
 
-        print: (x_, y_) ->
-            print_items(item_list, x_, y_)
-    }
-
-    -- limit = width + x
-    -- print_line(s, x, y, width)
+        @y = 0
+        @items = {}
+        for line in lines(txt)
+            @y = parse_line(line, @y, width, @items)
 
 
-    -- love.graphics.setFont(font)
+    ----
+    -- @returns the height of the printing
+    getHeight: =>
+        return @y
 
-    -- for words in foundtag\gmatch'%S+'
-        -- print(line, x, y)
-    --     words = splitv(line)
-    --     require"moon".p(words)
-    --     for word in *words
-    --         if word
-    --             print(word, x, y)
 
-    --     print(textfragment, x, y)
-    --     print(foundtag, x, y)
-    --     y += line_height
-    -- print(s\match('[^>]+$'), x, y)
-            -- parsefragment(self.parsedtext, textfragment)
-            -- table.insert(self.parsedtext, self.resources[foundtag] or foundtag)
+    ----
+    -- @param x
+    -- @param y
+    print: (x, y, alpha = 1) =>
+        for item in *@items
+            item.word[1][4] = alpha
+            print(item.word, item.font, x + item.x, y + item.y)
 
-    -- for w in s\gmatch("%S+")
-        -- print("'#{w}'", x, y)
-        -- y += line_height
+
+return PangoPrinter
 
