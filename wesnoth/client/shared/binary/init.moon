@@ -10,7 +10,7 @@ log    = loging'binary'
 search = (bin_path, path) ->
     love = love
 
-    search_path = "assets/" .. bin_path .. "/" .. path
+    search_path = "assets/" .. (if bin_path != '' then bin_path .. '/' else '') .. path
     log.debug("searching at: " .. search_path)
 
     if love.filesystem.getInfo(search_path)
@@ -22,8 +22,8 @@ get_binary = (path) ->
     DATA = DATA
     log.debug('searching for ' .. path)
 
-    for bin_path in *DATA.Binary_Path
-        if found = search(bin_path.path, path)
+    for bin_path in *DATA.Binary_Path.set
+        if found = search(bin_path, path)
             return found
 
     log.warn"Image #{path} not found"
@@ -46,10 +46,7 @@ image_path = (path) ->
     path, ext = path\match'([^~]*)~?(.*)'
 
     local realpath
-    if res = search('', path)
-        realpath = res
-    else
-        realpath = get_image(path)
+    realpath = get_image(path)
 
     if ext
         command, arg = ext\match'([^%(]*)%(([^%)]*)%)'
@@ -72,7 +69,6 @@ image_path = (path) ->
                 return love.image.newImageData(realpath)
     else
         assert(false)
-        -- print 'no ext'
         return love.image.newImageData(realpath)
 
     return nil
