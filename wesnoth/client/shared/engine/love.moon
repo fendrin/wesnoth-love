@@ -21,10 +21,11 @@ log = loging"engine"
 
 
 drawPerformance = () ->
-    mem_used = math.ceil(collectgarbage('count')/1024)
+    -- mem_used = math.ceil(collectgarbage('count')/1024)
     x, y = 4, 4
-    print("FPS: #{getFPS!} " .. '\n' ..
-            "RAM: #{mem_used}MB", x, y)
+    -- print("FPS: #{getFPS!} " .. '\n' ..
+    --         "RAM: #{mem_used}MB", x, y)
+    print("FPS: #{getFPS!}" , x, y)
 
 
 image_store = {}
@@ -53,6 +54,7 @@ drawBackground = (background) ->
     y = (screen_height - scaled_height) / 2
     love.graphics.draw(background, x, y, 0, scale, scale)
     love.graphics.reset!
+    return background
 
 
 bindHandler = (handler, role) ->
