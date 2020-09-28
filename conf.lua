@@ -4,11 +4,15 @@
 
 
 ----
+-- @file
 -- Executed by the love2d engine before all other files.
 -- used to configure the moonscript search pathes and loading moonscript.
 -- At last we register our config function here which is later called for
 -- seting up the engine's parameters.
 
+-- todo reenable jit after the segmentation fault is fixed
+-- todo add link to bug report here
+jit.off()
 
 -- this is the bare minimum to load the next file
 local shared_path = {
