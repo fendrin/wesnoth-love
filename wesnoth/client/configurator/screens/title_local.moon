@@ -4,7 +4,8 @@
 
 
 engine    = require"engine"
-get_image = require"image.image_path"
+import load_image from require'binary'
+
 Screen    = require'screen.Screen'
 
 menu      = require"gui.dialogs.local_menu"
@@ -27,6 +28,7 @@ class TitleLocal extends Screen
             @campaign = id
         else
             @localMenu\show!
+            @moan\show!
 
 
     new: (director) =>
@@ -35,31 +37,49 @@ class TitleLocal extends Screen
         super(director)
 
 
+    tips_ready = false
     setup_tips = () =>
+        return if tips_ready
+        tips_ready = true
         DATA = DATA
         for tip in *DATA.Tip
             config  = {
                 title:   tip.source
                 message: tip.text
-                image:   tip.image and get_image(tip.image)
+                image:   tip.portrait --and load_image(tip.portrait)
             }
             @moan\speak(config)
 
 
+    mousepressed: ( x, y, button, istouch, presses ) =>
+        switch button
+            when 1
+                if @moan\isAt(x, y)
+                    @moan\advanceMsg!
+
+
     open: =>
         DATA = DATA
+
         @campaign_dlg = campaign( ((action) -> campaign_handler(@, action)), DATA.Campaign)
-        @logo_bg    = get_image(DATA.Game_Config.images.game_logo_background)
-        @logo_text  = get_image(DATA.Game_Config.images.game_logo)
-        @background = get_image(DATA.Game_Config.images.game_title_background)
-        @map        = get_image(DATA.Game_Config.images.game_title)
+        @logo_bg    = load_image(DATA.Game_Config.images.game_logo_background)
+        @logo_text  = load_image(DATA.Game_Config.images.game_logo)
+        @background = load_image(DATA.Game_Config.images.game_title_background)
+        @map        = load_image(DATA.Game_Config.images.game_title)
 
         engine.playMusic(DATA.Game_Config.title_music)
 
         setup_tips(@)
 
         engine.pointer2dialog(@localMenu, "localMenu")
+        -- todo get rid of love
+        love = love
+        @resize(love.graphics.getWidth!, love.graphics.getHeight!)
         super!
+
+
+    resize: (width, height) =>
+        @moan\resize(width, height)
 
 
     close: =>
@@ -72,6 +92,7 @@ class TitleLocal extends Screen
             when 'campaign'
                 @localMenu\hide!
                 @campaign_dlg\show!
+                @moan\hide!
             when "exit"
                 engine.quit"restart"
             when "quit"
