@@ -27,8 +27,16 @@ campaign = (handler, campaigns) ->
             handler(.campaign.selected.id) )
 
         .campaign\onChange( ->
-            .imagePanel.icon       = load_imageData(campaigns[.campaign.selected.id].image)
-            .descriptionPanel.text = campaigns[.campaign.selected.id].description
+
+            selected = campaigns[.campaign.selected.id]
+
+            image = load_imageData(selected.image)
+            .campaignName.text = selected.name
+            .campaignImage.icon       = image
+            .campaignImage.height     = image\getHeight! + 1.5
+            .campaignImage.width      = image\getWidth!  + 1.5
+            .campaignImage\reshape!
+            .campaignDescription.text = selected.description
         )
 
     log.debug"campaign dialog created"
