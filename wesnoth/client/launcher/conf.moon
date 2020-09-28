@@ -1,12 +1,13 @@
 ----
 -- Copyright (C) 2018 by Fabian Mueller <fendrin@gmx.de>
 -- SPDX-License-Identifier: GPL-2.0+
+
 import update from require"pl.tablex"
 
 version =
     major: 0
     minor: 0
-    patch: 0
+    patch: 1
 
 love_version =
     major: 11
@@ -18,11 +19,9 @@ with version
 with love_version
     love_version = "#{.major}.#{.minor}"
 
+
 return ( config ) ->
 
-    -- require("moon").p(require"config")
-
-    -- merge in /config.luac or /config.lua or /config.moon (the first that exists)
     config_file = require"client.launcher.config"
     with config
         update(.window,  config_file.window)
@@ -43,4 +42,3 @@ return ( config ) ->
             .math    = false
             .thread  = true
 
-    -- require("moon").p(config)
