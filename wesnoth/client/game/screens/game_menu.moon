@@ -56,7 +56,7 @@ class MenuScreen extends Screen
 
 
     draw: =>
-        engine.drawBackground(@background)
-        engine.drawBackground(@foreground)
+        @background = engine.drawBackground(@background)
+        @foreground = engine.drawBackground(@foreground)
         super!
 
