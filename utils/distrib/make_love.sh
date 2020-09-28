@@ -36,8 +36,8 @@ win_zip64=love-${love_ver}-win64.zip
 mac_zip64=love-${love_ver}-macos.zip
 win_dir64=${love_dir}/love-${love_ver}-win64
 mac_dir64=${love_dir}/love.app
-wget -nc -P $love_dir https://bitbucket.org/rude/love/downloads/$mac_zip64
-wget -nc -P $love_dir https://bitbucket.org/rude/love/downloads/$win_zip64
+wget -nc -P $love_dir https://github.com/love2d/love/releases/download/$love_ver/$mac_zip64
+wget -nc -P $love_dir https://github.com/love2d/love/releases/download/$love_ver/$win_zip64
 unzip -n -q -d $love_dir ${love_dir}/${mac_zip64}
 unzip -n -q -d $love_dir ${love_dir}/${win_zip64}
 
