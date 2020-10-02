@@ -22,23 +22,17 @@ handle_command = (command, director) ->
             director.screens.game.moan\speak(command)
             return true
 
-        when "map"
-            gameState.board.map = command
-            return true
-
         when "setupReady"
             engine.sendRequest{ request_name: "startScenario" }
             return true
 
         when "data"
-            -- print'data recieved'
             export DATA = command
-            -- moon = require'moon'
-            -- moon.p(DATA)
             return true
 
-        when "Units"
-            for unit in *command.units
+        when 'state'
+            gameState.board.map = command.board.map
+            for unit in *command.board.units
                 gameState.board.units\place_unit(unit,
                     unit.x, unit.y)
             return true
@@ -47,10 +41,10 @@ handle_command = (command, director) ->
         --     music.add_to_playlist(
         --         "assets/data/core/music/#{command.name}")
         --     return true
+
         else
             return false
 
-    -- assert(false)
-
 
 return handle_command
+
