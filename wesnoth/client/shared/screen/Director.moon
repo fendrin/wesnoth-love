@@ -104,6 +104,11 @@ class Director
             if mousepressed = @active_screen.mousepressed
                 run_moon(mousepressed, @active_screen, x, y, button, istouch, presses)
 
+        love.wheelmoved = (x, y) ->
+            return unless @active_screen
+            if wheelmoved = @active_screen.wheelmoved
+                run_moon(wheelmoved, @active_screen, x, y)
+
             -- .mousereleased = (...) ->
             --     return unless @active_screen
             --     if mousereleased = @active_screen.mousereleased
