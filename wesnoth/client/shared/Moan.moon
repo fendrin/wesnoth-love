@@ -54,6 +54,17 @@ class Moan
             @seen = 1
 
 
+    optionUp: () =>
+        if @selectedOption > 1
+            @selectedOption -= 1
+
+
+    optionDown: () =>
+        active_msg = @chain[@active]
+        if #active_msg.option > @selectedOption
+            @selectedOption += 1
+
+
     advanceMsg: () =>
         if @seen < #@chain
             @mode = 'fade_out'
@@ -71,6 +82,7 @@ class Moan
 
     show: () =>
         @hidden = false
+        @resize(@width, @height)
 
 
     hide: () =>
@@ -95,9 +107,16 @@ class Moan
 
         if title = active_msg.title
             active_msg.printer = PangoPrinter("\n<span color='#BCB088' size='larger'>" .. title ..
-                    '\n\n</span>' .. active_msg.message, width)
+                    '\n\n</span>' .. active_msg.message .. '\n\n', width)
         else
             active_msg.printer = PangoPrinter('\n' .. active_msg.message, width)
+
+        if option = active_msg.option
+            for item in *option
+                if item.image
+                    item.image = load_image(item.image)
+
+                item.printer = PangoPrinter("<span size='larger'>" .. item.label .. '</span>' .. '\n' .. "<span color='#b2b2b2'>" .. item.description .. '</span>', width)
 
 
     speed = 3
@@ -125,6 +144,7 @@ class Moan
 
                     @seen += 1
                     @active = @seen
+                    @resize(@width, @height)
 
         active_msg = @chain[@active]
         return unless active_msg
@@ -149,6 +169,11 @@ class Moan
         if active_msg = @chain[@active]
             if text_height = active_msg.printer\getHeight!
                 content_height = math.max(text_height, content_height)
+            if option = active_msg.option
+                for i, item in ipairs(option)
+                    content_height += math.max(item.printer\getHeight!, item.image\getHeight!)
+                    if item.default and not @selectedOption
+                        @selectedOption = i
 
         @boxX = @left_offset
         @boxY = height - content_height
@@ -179,5 +204,51 @@ class Moan
             draw(image, 0, @height - image\getWidth!)
             image_width = image\getWidth!
 
-        active_msg.printer\print(@boxX + image_width + text_offset, @boxY, @alpha)
+        outline = true
+        active_msg.printer\print(@boxX + image_width + text_offset, @boxY, @alpha, outline)
+
+        text_y = active_msg.printer\getHeight! + @boxY
+
+        if option = active_msg.option
+            for i, item in ipairs(option)
+
+                item_image_height = 0
+                item_image_width  = 0
+                if item_image = item.image
+                    item_image_height = item_image\getHeight!
+                    item_image_width  = item_image\getWidth!
+
+                item_heigt = math.max(item.printer\getHeight!, item_image_height)
+
+                if i == @selectedOption
+                    rx = 2
+                    mode = 'line'
+                    style = 'rough'
+                    love.graphics.setLineStyle( style )
+                    love.graphics.setLineWidth( 1.5 )
+                    red   = 72.5 / 255
+                    green = 62.0 / 255
+                    blue  = 29.4 / 255
+
+                    love.graphics.setColor( red, green, blue, @alpha )
+                    love.graphics.rectangle( mode, @boxX + image_width + text_offset , text_y, 250, item_heigt, rx) -- , ry, segments )
+
+                    red   =  2.0 / 255
+                    green = 12.5 / 255
+                    blue  = 19.2 / 255
+                    love.graphics.setColor( red, green, blue, @alpha - 0.2)
+
+                    mode = 'fill'
+                    love.graphics.rectangle( mode, @boxX + image_width + text_offset + 1, (text_y + 1), 250 - 2, item_heigt - 2, rx, ry, segments )
+                    love.graphics.reset!
+
+                if item_image = item.image
+                    draw(item_image, image_width + text_offset, text_y)
+
+                item_text_y_offset = 0
+                if item.printer\getHeight! < item_image_height
+                    item_text_y_offset =  (item_image_height - item.printer\getHeight!) / 2
+
+                item.printer\print(@boxX + image_width + item_image_width + text_offset, text_y + item_text_y_offset, @alpha, outline)
+                text_y += math.max(item.printer\getHeight!, item_image_height)
 
