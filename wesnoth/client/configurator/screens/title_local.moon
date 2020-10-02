@@ -4,12 +4,12 @@
 
 
 engine    = require"engine"
-import load_image from require'binary'
-
 Screen    = require'screen.Screen'
 
-menu      = require"gui.dialogs.local_menu"
-campaign  = require"gui.dialogs.campaign"
+import load_image from require'binary'
+
+menu          = require"gui.dialogs.local_menu"
+campaign_dlg  = require"gui.dialogs.campaign"
 
 
 loging = loging
@@ -19,13 +19,13 @@ log    = loging"screen"
 class TitleLocal extends Screen
 
     handler = (action) =>
-        -- print action
         @next_action = action
 
 
     campaign_handler = (id) =>
         if id
             @campaign = id
+            @next_action = 'difficulty'
         else
             @localMenu\show!
             @moan\show!
@@ -43,34 +43,25 @@ class TitleLocal extends Screen
         tips_ready = true
         DATA = DATA
         for tip in *DATA.Tip
-            config  = {
+            cfg  = {
                 title:   tip.source
                 message: tip.text
-                image:   tip.portrait --and load_image(tip.portrait)
+                image:   tip.portrait and load_image(tip.portrait)
             }
-            @moan\speak(config)
-
-
-    mousepressed: ( x, y, button, istouch, presses ) =>
-        switch button
-            when 1
-                if @moan\isAt(x, y)
-                    @moan\advanceMsg!
+            @moan\speak(cfg)
 
 
     open: =>
         DATA = DATA
+        @campaign_dlg = campaign_dlg( ((action) -> campaign_handler(@, action)), DATA.Campaign)
 
-        @campaign_dlg = campaign( ((action) -> campaign_handler(@, action)), DATA.Campaign)
         @logo_bg    = load_image(DATA.Game_Config.images.game_logo_background)
         @logo_text  = load_image(DATA.Game_Config.images.game_logo)
         @background = load_image(DATA.Game_Config.images.game_title_background)
         @map        = load_image(DATA.Game_Config.images.game_title)
 
         engine.playMusic(DATA.Game_Config.title_music)
-
         setup_tips(@)
-
         engine.pointer2dialog(@localMenu, "localMenu")
         -- todo get rid of love
         love = love
@@ -87,12 +78,39 @@ class TitleLocal extends Screen
         super!
 
 
+    wheelmoved: (x, y) =>
+        if y > 0
+            @moan\optionUp!
+        if y < 0
+            @moan\optionDown!
+
+
+    select_difficulty = (campaign) =>
+        @selectingDifficulty = true
+        engine.setCursorVisible(false)
+
+        @moan\clear!
+
+        cfg = {
+            title: campaign.name
+            image: load_image(campaign.image)
+            message: 'Select difficulty:'
+            option: campaign.difficulty
+        }
+        @moan\speak(cfg)
+        @moan\show!
+
+
     update: (dt) =>
         switch @next_action
             when 'campaign'
                 @localMenu\hide!
-                @campaign_dlg\show!
                 @moan\hide!
+                @campaign_dlg\show!
+            when 'difficulty'
+                DATA = DATA
+                log.info"Starting the campaign #{@campaign}"
+                select_difficulty(@, DATA.Campaign[@campaign])
             when "exit"
                 engine.quit"restart"
             when "quit"
@@ -101,19 +119,6 @@ class TitleLocal extends Screen
                 @director\activate'preferences'
 
         @next_action = nil
-
-        if @campaign
-            log.info"Starting the campaign #{@campaign}"
-
-            config = {
-                mode: 'game'
-                campaign: @campaign
-            }
-            engine.writeConfig(config)
-            engine.restart!
-
-            @campaign = nil
-
         @moan\update(dt)
         super(dt)
 
@@ -133,4 +138,24 @@ class TitleLocal extends Screen
             engine.restart!
         if key == 'space'
             @moan\advanceMsg!
+
+
+    mousepressed: ( x, y, button, istouch, presses ) =>
+        switch button
+            when 1
+                if @moan\isAt(x, y)
+                    @moan\advanceMsg!
+            when 2
+                if @selectingDifficulty
+                    DATA = DATA
+                    config = {
+                        mode: 'game'
+                        campaign: @campaign
+                        difficulty: DATA.Campaign[@campaign].difficulty[@moan.selectedOption].define
+                    }
+                    engine.writeConfig(config)
+                    engine.restart!
+
+                    @selectingDifficulty = false
+                    @next_action = nil
 
