@@ -1,34 +1,29 @@
--- local RESOURCE = (...):gsub('%.', '/') .. '/'
-
 return function (config)
     config = config or {}
     local resources = assert(config.resources, 'missing config.resources')
     local backColor = config.backColor or { 240, 240, 240 }
-    -- local lineColor = config.lineColor or { 220, 220, 220 }
+    local lineColor = config.lineColor or { 220, 220, 220 }
     local textColor = config.textColor or { 0, 0, 0 }
     local highlight = config.highlight or { 0x19, 0xAE, 0xFF }
 
     local button_pressed = resources .. 'button_pressed.png'
     local button_focused = resources .. 'button_focused.png'
     local button_hovered = resources .. 'button_hovered.png'
-    local button = resources .. 'button.png'
+    local button         = resources .. 'button.png'
 
-    -- @todo
-    -- local triangle_left_pressed = resources .. ''
-
-    local check_checked_pressed = resources .. 'check_checked_pressed.png'
+    local check_checked_pressed   = resources .. 'check_checked_pressed.png'
     local check_unchecked_pressed = resources .. 'check_unchecked_pressed.png'
-    local check_checked_focused = resources .. 'check_checked_focused.png'
+    local check_checked_focused   = resources .. 'check_checked_focused.png'
     local check_unchecked_focused = resources .. 'check_unchecked_focused.png'
-    local check_checked = resources .. 'check_checked.png'
-    local check_unchecked = resources .. 'check_unchecked.png'
+    local check_checked           = resources .. 'check_checked.png'
+    local check_unchecked         = resources .. 'check_unchecked.png'
 
-    local radio_checked_pressed = resources .. 'radio_checked_pressed.png'
+    local radio_checked_pressed   = resources .. 'radio_checked_pressed.png'
     local radio_unchecked_pressed = resources .. 'radio_unchecked_pressed.png'
-    local radio_checked_focused = resources .. 'radio_checked_focused.png'
+    local radio_checked_focused   = resources .. 'radio_checked_focused.png'
     local radio_unchecked_focused = resources .. 'radio_unchecked_focused.png'
-    local radio_checked = resources .. 'radio_checked.png'
-    local radio_unchecked = resources .. 'radio_unchecked.png'
+    local radio_checked           = resources .. 'radio_checked.png'
+    local radio_unchecked         = resources .. 'radio_unchecked.png'
 
     local triangle_up           = resources .. 'triangle_up.png'
     local triangle_left         = resources .. 'triangle_left.png'
@@ -40,19 +35,15 @@ return function (config)
     local triangle_right_pressed = resources .. 'triangle_right_pressed.png'
     local triangle_right_hovered = resources .. 'triangle_right_hovered.png'
     local triangle_right_focused = resources .. 'triangle_right_focused.png'
-    local triangle_down = resources .. 'triangle_down.png'
+    local triangle_down          = resources .. 'triangle_down.png'
 
-
-
-    local slider = resources .. 'slider.png'
+    local slider         = resources .. 'slider.png'
     local slider_pressed = resources .. 'slider_pressed.png'
     local slider_hovered = resources .. 'slider_hovered.png'
     local slider_focused = resources .. 'slider_focused.png'
 
-
-
     local text_focused = resources .. 'text_focused.png'
-    local text = resources .. 'text.png'
+    local text         = resources .. 'text.png'
 
     local function getButtonSlices (self)
         return self.pressed.left and button_pressed
@@ -104,9 +95,9 @@ return function (config)
         return self.value and radio_checked or radio_unchecked
     end
 
-    -- local function getSashBackground (self)
-    --     return self.hovered and highlight or lineColor
-    -- end
+    local function getSashBackground (self)
+        return self.hovered and highlight or lineColor
+    end
 
     local function getSashHeight (self)
         return self.parent and self.parent.flow ~= 'x' and 4
@@ -164,7 +155,6 @@ return function (config)
             solid = true,
             _defaultDimension = 36,
         },
-
         Line = {
             margin = 0,
             padding = 4,
@@ -186,7 +176,7 @@ return function (config)
             type = { 'Line', 'Control' },
             focusable = true,
             icon = getCheckIcon,
-            minheight = 44 -- 36
+            minheight = 44
         },
         label = {
             type = { 'Line', 'Control' },
@@ -228,7 +218,7 @@ return function (config)
             minheight = 44
         },
         sash = {
-            -- background = getSashBackground,
+            background = getSashBackground,
             height = getSashHeight,
             width = getSashWidth,
         },
@@ -241,7 +231,7 @@ return function (config)
             slices = resources .. 'button_pressed.png',
         },
         ['slider.thumb'] = {
-            -- type = { 'button' },
+            type = { 'button' },
             icon = getSliderIcon,
             align = 'middle center',
             margin = 0,
@@ -259,18 +249,16 @@ return function (config)
             slices = resources .. 'button_pressed.png',
         },
         ['stepper.after'] = {
-            -- type = { 'button' },
+            type = { 'button' },
             icon = getStepperAfterIcon,
             margin = 0,
-            -- minwidth = 32,
             minwidth = 45,
             minheight = 32,
         },
         ['stepper.before'] = {
-            -- type = { 'button' },
+            type = { 'button' },
             icon = getStepperBeforeIcon,
             margin = 0,
-            -- minwidth = 32,
             minwidth = 45,
             minheight = 32,
         },
