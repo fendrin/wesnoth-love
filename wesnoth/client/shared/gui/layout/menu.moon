@@ -3,7 +3,7 @@
 -- SPDX-License-Identifier: GPL-2.0+
 
 greet_txt = 'Welcome to Wesnoth for Löve'
-alpha = 140
+alpha = 0.55
 background = {0, 0, 0, alpha}
 
 (id, buttons) -> {
