@@ -4,9 +4,7 @@
 
 import load_imageData from require'binary'
 
--- todo fix in luigi
 bronze = { 0.734375, 0.6875, 0.53125 }
-bronze256 = { 0.734375 * 256, 0.6875 * 256, 0.53125 * 256 }
 
 getColor = (self) ->
     if self.value
@@ -48,7 +46,9 @@ getColor = (self) ->
                         { type: 'label', height: 50, text: 'Play a Campaign', size: 22, color: bronze, align: 'left, middle' }
                     }
                     {
-                        type: 'panel'
+                        -- type: 'panel'
+                        -- type: 'panel'
+                        style: 'dialogBody'
                         flow: 'x'
                         things
                         { width: 10 }
@@ -58,7 +58,7 @@ getColor = (self) ->
                             {
                                 flow: 'x'
                                 {
-                                    outline: bronze256
+                                    outline: bronze
                                     type: 'panel'
                                     id: 'campaignImage'
                                     background: {0,0,0}
@@ -74,8 +74,8 @@ getColor = (self) ->
                     {
                         style: 'dialogFoot'
                         {}
-                        { style: 'dialogButton', id: 'closeButton', text: 'Close' , color: bronze }
-                        { style: 'dialogButton', id: 'startButton', text: 'Start' , color: bronze }
+                        { style: 'dialogButton', id: 'closeButton', text: 'Close' }
+                        { style: 'dialogButton', id: 'startButton', text: 'Start' }
                     }
                 }
             }
