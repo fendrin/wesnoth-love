@@ -1,8 +1,8 @@
 return function (config)
     config = config or {}
     local resources = assert(config.resources, 'missing config.resources')
-    local backColor = config.backColor or { 240, 240, 240 }
-    local lineColor = config.lineColor or { 220, 220, 220 }
+    local backColor = config.backColor or { 240/255, 240/255, 240/255 }
+    local lineColor = config.lineColor or { 220/255, 220/255, 220/255 }
     local textColor = config.textColor or { 0, 0, 0 }
     local highlight = config.highlight or { 0x19, 0xAE, 0xFF }
 
@@ -165,6 +165,7 @@ return function (config)
         -- widget types
 
         button = {
+            color = {0, 0, 1},
             type = { 'Control' },
             padding = 6,
             slices = getButtonSlices,
@@ -223,7 +224,7 @@ return function (config)
             width = getSashWidth,
         },
         resize = {
-            background = {255,255,255}
+            background = {1, 1, 1}
         },
         slider = {
             minheight = 52,
