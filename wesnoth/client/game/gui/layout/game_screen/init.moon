@@ -439,6 +439,7 @@ turns = {
     padding: 0
     margin: 0
     {
+        id: 'flag'
         padding: 0
         margin: 0
         type: 'label'
