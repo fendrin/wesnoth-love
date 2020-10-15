@@ -15,8 +15,17 @@ getColor = (self) ->
 
 (campaigns) ->
     things = for id, campaign in  pairs campaigns
-        { style: 'listThing', align: 'middle left', group: 'campaign', id: id, type: 'radio',
-            text: campaign.name, icon: load_imageData(campaign.icon), background: getColor, size: 16 }
+        {
+            style: 'listThing'
+            align: 'middle left'
+            group: 'campaign'
+            id: id
+            type: 'radio'
+            text: campaign.name
+            icon: load_imageData(campaign.icon)
+            background: getColor
+            size: 16
+        }
 
     first = campaigns[things[1].id]
     campaign_image = load_imageData(first.image)
@@ -46,8 +55,6 @@ getColor = (self) ->
                         { type: 'label', height: 50, text: 'Play a Campaign', size: 22, color: bronze, align: 'left, middle' }
                     }
                     {
-                        -- type: 'panel'
-                        -- type: 'panel'
                         style: 'dialogBody'
                         flow: 'x'
                         things
@@ -67,7 +74,14 @@ getColor = (self) ->
                                     height: campaign_image\getHeight! + 1.5
                                 }
                                 { width: 10 }
-                                { type: 'panel', id: 'campaignDescription', text: first.description, wrap: true, size: 16}
+                                {
+                                    type: 'panel'
+                                    id: 'campaignDescription'
+                                    text: first.description
+                                    wrap: true
+                                    size: 16
+                                    align: 'top'
+                                }
                             }
                         }
                     }
