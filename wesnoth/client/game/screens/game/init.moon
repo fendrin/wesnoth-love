@@ -9,7 +9,7 @@
 engine = require'engine'
 Screen = require'screen.Screen'
 command_handler = require'command_handler'
-
+send_request = require'send_request'
 
 class GameScreen extends Screen
 
@@ -20,12 +20,20 @@ class GameScreen extends Screen
                     @show_menu = true
                 when "endTurn"
                     @end_turn  = true
+                when 'objectives'
+                    @show_objectives = true
 
+
+    end_turn_confirmed = false
+    end_turn_dlg_handler = (confirmed) ->
+        end_turn_confirmed = confirmed
 
     new: (director) =>
         @dlg   = (require"gui.dialogs.game_screen")((action) -> dlg_handler(@, action))
         @board =  require"screens.game.board"
         @end_turn  = false
+        @end_turn_dlg = (require"gui.dialogs.yes_no")("End Turn",
+                "Do you want to end your turn?", end_turn_dlg_handler)
         @show_menu = false
         @id = 'gameScreen'
         super(director)
@@ -55,15 +63,7 @@ class GameScreen extends Screen
 
         if @end_turn
             @end_turn = false
-            result = false
-            handler = (confirmed) -> result = confirmed
-            dlg = (require"gui.dialogs.yes_no")("End Turn",
-                "Do you want to end your turn?", handler)
-            dlg\show!
-
-            --todo implement
-            if result
-                print 'end_turn'
+            @end_turn_dlg\show!
 
         if @moan\showing!
             engine.setCursorVisible( false )
@@ -71,6 +71,18 @@ class GameScreen extends Screen
         else
             engine.setCursorVisible( true )
             @board.update(@dlg, dt)
+
+        if @show_objectives
+            @show_objectives = false
+            send_request{
+                request_name: 'objectives'
+            }
+
+        if end_turn_confirmed
+            end_turn_confirmed = false
+            send_request{
+                request_name: 'endTurn'
+            }
 
 
     draw: =>
