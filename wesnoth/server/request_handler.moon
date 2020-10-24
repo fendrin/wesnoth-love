@@ -5,13 +5,17 @@
 loging = loging
 log        = loging"server"
 controller = (require"wesnoth").controller
--- wesnoth    = (require"wesnoth").wesnoth
+wesnoth    = (require"wesnoth").wesnoth
 
 
 request_handler = (request) ->
 
     DATA = DATA
     switch request.request_name
+
+        when 'objectives'
+            wesnoth.show_sides_objectives(1)
+            return
 
         when "connect"
             log.info'connect request handler'
