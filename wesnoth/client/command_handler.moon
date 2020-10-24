@@ -22,6 +22,13 @@ handle_command = (command, director) ->
             director.screens.game.moan\speak(command)
             return true
 
+        when 'show_objectives'
+            cfg = {
+                message: command.objectives
+            }
+            director.screens.game.moan\speak(cfg)
+            return true
+
         when "setupReady"
             engine.sendRequest{ request_name: "startScenario" }
             return true
