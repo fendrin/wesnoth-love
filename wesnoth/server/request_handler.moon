@@ -13,6 +13,10 @@ request_handler = (request) ->
     DATA = DATA
     switch request.request_name
 
+        when 'endTurn'
+            wesnoth.end_turn!
+            return
+
         when 'objectives'
             wesnoth.show_sides_objectives(1)
             return
